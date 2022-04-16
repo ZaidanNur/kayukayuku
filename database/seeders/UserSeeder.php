@@ -19,7 +19,11 @@ class UserSeeder extends Seeder
         $admin = User::create([
             'name' => 'Account Admin',
             'email'=> 'Admin@test.com',
-            'password'=>bcrypt('1234asdf')
+            'password'=>bcrypt('1234asdf'),
+            'username'=>'ThePiece',
+            'phone'=>'081259736329',
+            'address'=>'Semboro',
+
         ]);
 
         $admin-> assignRole('admin');
@@ -27,7 +31,10 @@ class UserSeeder extends Seeder
         $user = User::create([
             'name' => 'Account Customer',
             'email'=> 'Customer@test.com',
-            'password'=>bcrypt('1234asdf')
+            'password'=>bcrypt('1234asdf'),
+            'username'=>'ThePieceCus',
+            'phone'=>'0812597777',
+            'address'=>'Semboro Kulon',
         ]);
 
         $user-> assignRole('customer');

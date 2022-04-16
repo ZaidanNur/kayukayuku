@@ -1,0 +1,233 @@
+.home-title {
+  font-family: Jacques Francois;
+  font-size: 30px;
+}
+
+.home-title {
+  font-family: Jacques Francois;
+  font-size: 30px;
+}
+
+header {
+  color: #FFFFFF;
+  padding: 200px 0px 150px;
+  -webkit-box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+          box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+  background-image: url("https://images.unsplash.com/photo-1501420896719-ad7fe0ee297e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80");
+  background-size: cover;
+}
+
+header h1 {
+  font-style: Montserrat;
+  font-size: 80px;
+  font-weight: 400;
+}
+
+header p {
+  font-style: Montserrat;
+  font-size: 36px;
+  font-weight: 300;
+}
+
+header .btn-explore {
+  display: inline-block;
+  padding: .75rem 1.25rem;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: .15rem;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  position: relative;
+  border-color: #F3CDA9;
+  overflow: hidden;
+  z-index: 1;
+}
+
+header .btn-explore:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: -2;
+}
+
+header .btn-explore:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: #F3CDA9;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  z-index: -1;
+}
+
+header .btn-explore:hover {
+  color: #572121;
+}
+
+header .btn-explore:hover:before {
+  width: 100%;
+}
+
+.section-stats {
+  margin-top: -50px;
+}
+
+.section-stats .stats-detail {
+  background-color: #C8B687;
+  padding-top: 15px;
+  padding-left: 54px;
+}
+
+.section-stats h2,
+.section-stats p {
+  font-family: 'Assistant', sans-serif;
+  color: #071C4D;
+}
+
+.section-stats h2 {
+  font-family: Montserrat;
+  color: #6A0918;
+  font-weight: 600;
+  font-size: 30px;
+  margin-bottom: 0;
+}
+
+.section-stats p {
+  font-weight: 300;
+  font-size: 20px;
+  color: #360B12;
+}
+
+@media screen and (max-width: 990PX) {
+  .section-stats .stats-detail {
+    padding-left: 15px;
+  }
+}
+
+.best-selling-product-title {
+  color: #625230;
+  font-family: Montserrat;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.section-best-selling-product .product-card .card-title {
+  font-family: Montserrat;
+  font-weight: 600;
+  font-size: 20px;
+  color: #786255;
+}
+
+.section-best-selling-product .product-card .bi-star-fill {
+  color: #FFC107;
+}
+
+.section-best-selling-product .product-card .card-text {
+  color: #625230;
+  font-family: Montserrat;
+  font-size: 15px;
+  font-weight: 400;
+  color: #625230;
+}
+
+.section-best-selling-product .product-card ul {
+  margin-top: -18px;
+}
+
+.section-best-selling-product .product-card ul li {
+  color: #625230;
+  font-family: Montserrat;
+  font-size: 15px;
+  font-weight: 400;
+  color: #625230;
+}
+
+.logout-modal .modal-content {
+  background-color: #c8b68798;
+}
+
+.logout-modal .btn {
+  width: 100px;
+  border-radius: 20px;
+}
+
+.login-modal .modal-content {
+  background-color: #c8b68798;
+  color: #6A0918;
+}
+
+.login-modal .btn {
+  width: 100px;
+  border-radius: 20px;
+}
+
+.login-button {
+  width: 100px;
+  color: #572121;
+  font-weight: 600;
+  background-color: #C8B687;
+  border-color: transparent;
+}
+
+.login-button:hover {
+  color: #572121;
+  background-color: #dbcca4;
+  border-color: transparent;
+}
+
+.register-button {
+  width: 100px;
+  background-color: transparent;
+  border-color: #534629;
+  font-weight: 500;
+  display: inline-block;
+  color: #572121;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  position: relative;
+  border-color: #572121;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.register-button:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: -2;
+}
+
+.register-button:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: #572121;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  z-index: -1;
+}
+
+.register-button:hover {
+  color: #fff;
+  border-color: transparent;
+}
+
+.register-button:hover:before {
+  width: 100%;
+}
+/*# sourceMappingURL=main.css.map */
