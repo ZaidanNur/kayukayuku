@@ -29,7 +29,7 @@
 
                     @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">
+                            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#registerModal">
                                 
                             <div class="btn btn-primary register-button">{{ __('Register') }}</div>
                             </a>

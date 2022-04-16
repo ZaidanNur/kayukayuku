@@ -160,13 +160,31 @@ header .btn-explore:hover:before {
 }
 
 .login-modal .modal-content {
+  border-radius: 20px;
   background-color: #c8b68798;
-  color: #6A0918;
+  color: #4e030e;
 }
 
 .login-modal .btn {
-  width: 100px;
+  width: 230px;
   border-radius: 20px;
+}
+
+.login-modal .btn-primary {
+  background-color: #625230;
+  font-family: Montserrat;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #E5E5E5;
+  border-color: transparent;
+}
+
+.login-modal .btn-primary:hover {
+  background-color: #756440;
+}
+
+.login-modal .btn-link {
+  color: #4e030e;
 }
 
 .login-button {
