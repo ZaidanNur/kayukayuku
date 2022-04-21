@@ -40,16 +40,20 @@
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->username }}
                         </a>
-
+                    
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <!-- Button trigger modal -->
                             <button type="button" class="btn dropdown-item" data-bs-toggle="modal" data-bs-target="#logoutModal">
                                 {{ __('Logout') }}
                             </button>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
+                            @role('admin')
+                                
+                                    <a href="{{ route('dashboard') }}" class="btn dropdown-item">
+                                        {{ __('Dashboard') }}
+                                    </a>
+                                
+                            @endrole
+                            
                         </div>
                     </li>
                 @endguest

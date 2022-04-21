@@ -119,6 +119,12 @@ header .btn-explore:hover:before {
   font-weight: 700;
 }
 
+.section-best-selling-product .product-card img {
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .section-best-selling-product .product-card .card-title {
   font-family: Montserrat;
   font-weight: 600;

@@ -1,25 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}}
 <header>
     <div class="text-center">
         <h1>
@@ -80,74 +61,48 @@
         <!-- 
             Bagian bawah ini nanti di looping
          -->
-        <div class="col-4">
-            <div class="card product-card mb-3">
-                <img src="images/1.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Piring Makan Anak/Piring Karakter Kayu</h5>
-                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+        @foreach ($items as $item)
+            <div class="col-4">
+                <div class="card product-card mb-3">
+                    @php
+                        $is_image = false
+                    @endphp
 
-                    <p class="card-text">Deskripsi Produk :</p>
-                    <ul>
-                        <li>
-                            Bahan baku mahoni
-                        </li>
-                        <li>
-                            Pengerjaan dengan mesin CNC dan amplas
-                        </li>
-                        <li>
-                            Tebal -+2,5 cm
-                        </li>
-                    </ul>
+                    @foreach ($galleries as $gallery)
+                        @if ($gallery->product_id == $item->id)
+                            <img src="{{ $gallery->image }}" class="card-img-top" alt="...">
+                            @php
+                                $is_image = true
+                            @endphp
+                        @endif
+                    @endforeach
+
+                    @if ($is_image)
+                        
+                    @else
+                    <img src="{{ url("images/img-not-found.jpg") }}" class="card-img-top" alt="...">
+                    @endif
+
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $item->product_name }}</h5>
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+
+                        <p class="card-text">{{ $item->product_description }}</p>
+                        {{-- <ul>
+                            <li>
+                                Bahan baku mahoni
+                            </li>
+                            <li>
+                                Pengerjaan dengan mesin CNC dan amplas
+                            </li>
+                            <li>
+                                Tebal -+2,5 cm
+                            </li>
+                        </ul> --}}
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="col-4">
-            <div class="card product-card mb-3">
-                <img src="images/1.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Piring Makan Anak/Piring Karakter Kayu</h5>
-                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-
-                    <p class="card-text">Deskripsi Produk :</p>
-                    <ul>
-                        <li>
-                            Bahan baku mahoni
-                        </li>
-                        <li>
-                            Pengerjaan dengan mesin CNC dan amplas
-                        </li>
-                        <li>
-                            Tebal -+2,5 cm
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-4">
-            <div class="card product-card mb-3">
-                <img src="images/1.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Piring Makan Anak/Piring Karakter Kayu</h5>
-                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-
-                    <p class="card-text">Deskripsi Produk :</p>
-                    <ul>
-                        <li>
-                            Bahan baku mahoni
-                        </li>
-                        <li>
-                            Pengerjaan dengan mesin CNC dan amplas
-                        </li>
-                        <li>
-                            Tebal -+2,5 cm
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        @endforeach
 
 
     </div>

@@ -9,8 +9,6 @@
 }
 
 header {
-    // margin-left: 50px;
-    // margin-right: 50px;
     color: #FFFFFF;
     padding: 200px 0px 150px;
     box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .2);
@@ -108,6 +106,10 @@ header {
 
 .section-best-selling-product {
     .product-card {
+        img {
+            height: 200px;
+            object-fit: cover;
+        }
         .card-title {
             font-family: Montserrat;
             font-weight: 600;
