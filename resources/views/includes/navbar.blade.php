@@ -38,20 +38,20 @@
                 @else
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->username }}
+                            {{ Auth::user()->name}}
                         </a>
                     
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <!-- Button trigger modal -->
                             <button type="button" class="btn dropdown-item" data-bs-toggle="modal" data-bs-target="#logoutModal">
-                                {{ __('Logout') }}
+                                <i class="fa-solid fa-arrow-right-from-bracket p-2  me-2"> </i>{{ __('Logout') }}
                             </button>
+                            <a href="{{ route('profile',Auth::user()->id) }}" class="btn dropdown-item">
+                                <i class="fa-solid fa-user-alt p-2 rounded-circle border border-secondary me-2"></i>{{ __('Profile') }}</a>
                             @role('admin')
-                                
                                     <a href="{{ route('dashboard') }}" class="btn dropdown-item">
-                                        {{ __('Dashboard') }}
+                                        <i class="fa-solid fa-chart-line me-2"></i>{{ __('Dashboard') }}
                                     </a>
-                                
                             @endrole
                             
                         </div>

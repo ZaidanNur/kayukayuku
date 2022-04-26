@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Gallery;
 use App\Models\Product;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\ProductRequest;
+use App\Models\User;
 
-class ProductController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,12 +18,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $items = Product::all();
-        $galleries = Gallery::all();
-        return view('pages.admin.product.product',[
-            'items'=>$items,
-            'galleries'=>$galleries
-        ]);
+        //
     }
 
     /**
@@ -33,7 +28,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -42,23 +37,18 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductRequest $request)
+    public function store(Request $request)
     {
-        $data = $request ->all();
-        $data['slug']=Str::slug($request->product_name);
-
-        Product::create($data);
-
-        return redirect()->route('products.index');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
         //
     }
@@ -66,46 +56,41 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request
      */
-    public function edit($id)
+    public function edit(UserRequest $request ,$id)
     {
-        $item = Product::findOrFail($id);
-        return view('pages.admin.product.edit',[
-            'item'=>$item
-        ]);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductRequest $request,$id)
+    public function update(UserRequest $request, $id)
     {
         $data = $request ->all();
-        $data['slug']=Str::slug($request->product_name);
-        $item = Product::findOrFail($id);
+
+        $item = User::findOrFail($id);
 
         $item -> update($data);
 
-        return redirect()->route('products.index');
+        return redirect()->route('profile',$id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $item = Product::findOrdFail($id);
-        $item -> delete();
-
-        return redirect()->route('products.index');
+        //
     }
 }

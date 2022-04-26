@@ -229,3 +229,123 @@ header {
         }
     }
 }
+
+// COMPANY PROFILE
+.company-profile {
+    .logo-mid {
+        margin-top: -290px;
+        margin-bottom: 290px;
+    }
+    .brown-section {
+        padding-left: 0px;
+        padding-right: 0px;
+        background-color: #625230;
+        height: 260px;
+        .right-section {
+            margin-left: -40px;
+            height: 260px;
+            h3 {
+                font-size: 18px;
+            }
+            p {
+                font-size: 11px;
+                text-align: justify;
+            }
+        }
+        .left-section {
+            margin-right: 0px;
+        }
+    }
+    .top-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        .left-content {
+            padding: 25px;
+            h3 {
+                margin-top: 50px;
+                padding-left: 15px;
+                font-family: Montserrat;
+                font-weight: 700;
+                font-size: 25px;
+                color: #6A0918;
+            }
+            p {
+                padding-left: 15px;
+                text-align: justify;
+                font-family: Montserrat;
+                font-weight: 600;
+                font-size: 13px;
+                color: #6A0918;
+            }
+            .img-profile {
+                background-image: url('../images/mg-profile.png');
+                background-size: cover;
+                height: 250px;
+            }
+        }
+        .right-content {
+            background-image: url('../images/img-2.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 250px;
+            width: 510px;
+        }
+    }
+    .bot-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        .left-content {
+            background-color: #C8B687;
+            height: 250px;
+            h3 {
+                margin-top: 70px;
+                padding-left: 15px;
+                font-family: Montserrat;
+                font-weight: 700;
+                font-size: 35px;
+                color: #6A0918;
+            }
+            p {
+                padding-left: 15px;
+                text-align: justify;
+                font-family: Montserrat;
+                font-weight: 600;
+                font-size: 13px;
+                color: #6A0918;
+            }
+            h2 {
+                background-color: #918358;
+                font-size: 25px;
+                font-family: Montserrat;
+                font-weight: 600;
+                font-style: italic;
+                color: white;
+                padding: 10px;
+                border-radius: 10px;
+            }
+            .img-profile {
+                background-image: url('../images/mg-profile.png');
+                background-size: cover;
+                height: 250px;
+            }
+        }
+        .right-content {
+            padding: 50px;
+            height: 250px;
+            h3 {
+                font-family: Montserrat;
+                font-weight: 700;
+                font-size: 28px;
+                color: #6A0918;
+            }
+            .platform {
+                margin-left: 30px;
+            }
+        }
+    }
+}
+
+.product-collection {
+    // margin-top: 290px;
+}

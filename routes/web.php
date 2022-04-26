@@ -2,9 +2,11 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\GalerryController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomepageController;
 
 /*
@@ -19,6 +21,11 @@ use App\Http\Controllers\HomepageController;
 */
 
 Route::get('/', [HomepageController::class, 'index'])->name('home');
+Route::get('/company-profile', [CompanyController::class, 'index'])->name('company');
+Route::get('/user-profile/{id}', [ProfileController::class, 'index'])->name('profile');
+// Route::get('/edit-profile/{id}', [UserController::class, 'edit'])->name('edit-profile');
+
+
 
 Route::get('/money', function () {
     return view('pages.admin.money');
@@ -42,5 +49,6 @@ Route::middleware('role:admin')->group(function () {
     // });
 });
 
-Route::resource('galleries',GalerryController::class);
+Route::resource('galleries',GalleryController::class);
+Route::resource('users',UserController::class);
 Auth::routes(['verify'=>true]);

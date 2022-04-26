@@ -9,7 +9,7 @@
         <p>
             100% original & Foodgrade !!
         </p>
-        <a href="#" class="btn btn-explore px-4 mt-4">
+        <a href="{{ route('company') }}" class="btn btn-explore px-4 mt-4">
             EXPLORE
         </a>
     </div>

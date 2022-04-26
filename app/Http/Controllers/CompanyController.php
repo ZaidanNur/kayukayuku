@@ -2,22 +2,18 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Gallery;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class HomepageController extends Controller
+class CompanyController extends Controller
 {
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
-    {   $items = Product::take(6)->get();
+    {   $items = Product::all();
         $galleries = Gallery::all();
-        return view('pages.home',[
+        return view('pages.company',[
             'items'=>$items,
             'galleries'=>$galleries
         ]);
