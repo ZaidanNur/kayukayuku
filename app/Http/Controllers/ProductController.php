@@ -98,12 +98,12 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Product
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $item = Product::findOrdFail($id);
+        $item = Product::findOrFail($id);
         $item -> delete();
 
         return redirect()->route('products.index');

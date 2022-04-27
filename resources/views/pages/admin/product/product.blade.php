@@ -62,9 +62,9 @@
                                     </i>
                                 </a>
 
-                                <form action="{{ route('products.edit',$item->id) }}" method="POST" class="d-inline">
+                                <form action="{{ route('products.destroy',$item->id) }}" method="POST" class="d-inline">
                                     @csrf
-                                    @method('detele')
+                                    @method('delete')
                                     <button class="btn btn-danger">
                                         <i class="fa-solid fa-trash-can"></i>
                                     </button>
