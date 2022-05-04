@@ -9,12 +9,15 @@
                         <form class="form-floating" method="POST" action="{{ route('login') }}">
                             @csrf
                             
-    
+                            
                             <div class="row mb-3 justify-content-center ">
+                                <div class="d-flex justify-content-center">
+                                    <h3>LOGIN</h3>
+                                </div>
                                 
                                 <div class="col-10">
                                     <label for="email" >{{ __('Email Address') }}</label>
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="{{ __('Email@example.com') }}" autofocus>
     
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -27,7 +30,7 @@
                             <div class="row mb-3 justify-content-center">
                                 <div class="col-md-10">
                                     <label for="password" >{{ __('Password') }}</label>
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="{{ __('Password') }}">
     
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">

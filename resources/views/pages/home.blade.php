@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+@if($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 <header>
     <div class="text-center">
         <h1>
@@ -62,15 +71,15 @@
             Bagian bawah ini nanti di looping
          -->
         @foreach ($items as $item)
-            <div class="col-4">
-                <div class="card product-card mb-3">
+            <div class="col-4 my-3">
+                <div class="card product-card mb-3 h-100">
                     @php
                         $is_image = false
                     @endphp
 
                     @foreach ($galleries as $gallery)
                         @if ($gallery->product_id == $item->id)
-                            <img src="{{ $gallery->image }}" class="card-img-top" alt="...">
+                            <img src="{{ Storage::url($gallery->image) }}" class="card-img-top" alt="...">
                             @php
                                 $is_image = true
                             @endphp

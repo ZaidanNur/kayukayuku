@@ -23,6 +23,7 @@ use App\Http\Controllers\HomepageController;
 Route::get('/', [HomepageController::class, 'index'])->name('home');
 Route::get('/company-profile', [CompanyController::class, 'index'])->name('company');
 Route::get('/user-profile/{id}', [ProfileController::class, 'index'])->name('profile');
+Route::get('/product-details/{id}',[ProductController::class,'details'])->name('product-details');
 // Route::get('/edit-profile/{id}', [UserController::class, 'edit'])->name('edit-profile');
 
 
@@ -43,12 +44,13 @@ Route::middleware('role:admin')->group(function () {
     Route::get('/dashboard', [ProductController::class, 'index'])->name('dashboard');
 
     Route::resource('products',ProductController::class);
+    Route::resource('galleries',GalleryController::class);
 
     // Route::get('/user/profile', function () {
     //     // Uses first & second middleware...
     // });
 });
 
-Route::resource('galleries',GalleryController::class);
+
 Route::resource('users',UserController::class);
 Auth::routes(['verify'=>true]);

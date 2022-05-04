@@ -49,7 +49,7 @@ class ProductController extends Controller
 
         Product::create($data);
 
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('success',($request->product_name.' product data added successfully'));
     }
 
     /**
@@ -92,7 +92,7 @@ class ProductController extends Controller
 
         $item -> update($data);
 
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('success',($request->product_name.' product data has been successfully updated'));
     }
 
     /**
@@ -107,5 +107,15 @@ class ProductController extends Controller
         $item -> delete();
 
         return redirect()->route('products.index');
+    }
+
+    public function details($id)
+    {
+        $item = Product::findOrFail($id);
+        $galleries = Gallery::all();
+        return view('pages.productDetails',[
+            'item' => $item,
+            'galleries'=>$galleries
+        ]);
     }
 }

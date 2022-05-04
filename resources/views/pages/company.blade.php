@@ -79,7 +79,7 @@
 
 <div class="container mt-4 product-collection">
     <div class="best-selling-product-title text-center">
-        KOLEKSI PRODUCT
+        KOLEKSI PRODUK
     </div>
     <hr>
     <div class="section-best-selling-product row justify-content-start pe-3">
@@ -88,14 +88,14 @@
          -->
         @foreach ($items as $item)
             <div class="col-4">
-                <div class="card product-card mb-3">
+                <div class="card product-card mb-3 h-100">
                     @php
                         $is_image = false
                     @endphp
 
                     @foreach ($galleries as $gallery)
                         @if ($gallery->product_id == $item->id)
-                            <img src="{{ $gallery->image }}" class="card-img-top" alt="...">
+                            <img src="{{ Storage::url($gallery->image) }}" class="card-img-top" alt="...">
                             @php
                                 $is_image = true
                             @endphp

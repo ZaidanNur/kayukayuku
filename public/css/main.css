@@ -391,4 +391,28 @@ header .btn-explore:hover:before {
 .company-profile .bot-content .right-content .platform {
   margin-left: 30px;
 }
+
+.product-details .card {
+  background-color: #e4e3d9;
+  max-width: 860px;
+}
+
+.product-details .card .card-content h4 {
+  background-color: #D4D3B3;
+  font-size: 25px;
+  font-family: Montserrat;
+  font-weight: 600;
+  color: #6A0918;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: -webkit-fit-content;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+}
+
+.product-details .card .card-content p {
+  font-size: 18px;
+  font-family: Montserrat;
+  color: #625230;
+}
 /*# sourceMappingURL=main.css.map */
