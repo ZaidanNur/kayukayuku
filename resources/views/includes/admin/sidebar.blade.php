@@ -1,7 +1,7 @@
 <!-- Sidebar Start -->
 <div class="sidebar pe-4 pb-3">
     <nav class="navbar bg-light navbar-light">
-        <a href="index.html" class="navbar-brand mx-4 mb-3">
+        <a href="{{ route('home') }}" class="navbar-brand mx-4 mb-3">
             <h3 class="text-primary">Dashbord Admin</h3>
         </a>
         <div class="d-flex align-items-center ms-4 mb-4">
@@ -15,8 +15,9 @@
             </div>
         </div>
         <div class="navbar-nav w-100">
-            <a href="{{ route('products.index') }}" class="nav-item nav-link {{ request()->is('products') ? 'active' : ''}}"><i class="fa fa-cubes-stacked me-2"></i>Product</a>
-            <a href="{{ route('galleries.index') }}" class="nav-item nav-link {{ request()->is('galleries') ? 'active' : ''}}"><i class="fa fa-images"></i>Galleries</a>
+            <a href="{{ route('products.index') }}" class="nav-item nav-link {{ request()->is('products') ? 'active' : ''}} {{ request()->is('dashboard') ? 'active' : ''}}"><i class="fa fa-cubes-stacked me-2"></i>Product</a>
+            <a href="{{ route('galleries.index') }}" class="nav-item nav-link {{ request()->is('galleries') ? 'active' : ''}}"><i class="fa fa-images me-2"></i>Galleries</a>
+            <a href="{{ route('changes_logs.index') }}" class="nav-item nav-link {{ request()->is('changes_logs') ? 'active' : ''}}"><i class="fa fa-clipboard-list me-2"></i>Stock Logs</a>
             <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
             <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
         </div>

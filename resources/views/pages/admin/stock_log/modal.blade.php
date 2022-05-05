@@ -19,7 +19,7 @@
                             <div class="d-sm-flex align-items-center justify-content-between mb-4">
                                 <h1 class="h4 mb-0 text-gray-600">Tambah Data Produk</h1>
                             </div>
-                                <form id="addProduct" action="{{ route('products.store') }}" method="post">
+                                <form id="addProduct" action="" method="post">
                                     @csrf
 
                                     <div class="form-group">
@@ -101,7 +101,7 @@
                             </div>
                         @endif
 
-                        <form action="{{ route('products.update',$item->id) }}" method="post">
+                        <form action="" method="post">
                             @csrf
                             @method('PUT')
             

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChangeLogController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomepageController;
+use App\Models\ChangeLog;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +47,7 @@ Route::middleware('role:admin')->group(function () {
 
     Route::resource('products',ProductController::class);
     Route::resource('galleries',GalleryController::class);
+    Route::resource('changes_logs',ChangeLogController::class);
 
     // Route::get('/user/profile', function () {
     //     // Uses first & second middleware...

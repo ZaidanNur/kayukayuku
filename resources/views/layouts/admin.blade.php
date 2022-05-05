@@ -36,7 +36,7 @@
 
     <!-- Template Javascript -->
     <script src="{{ url('backend/dashboard/js/main.js') }}"></script>
-
+    @livewireScripts
     @stack('script-after')
 </body>
 

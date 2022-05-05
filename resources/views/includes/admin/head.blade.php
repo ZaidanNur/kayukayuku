@@ -29,6 +29,8 @@
     <link href="{{ url("backend/dashboard/css/style.css") }}" rel="stylesheet">
     <link href="{{ url("backend/dashboard/css/admin.css") }}" rel="stylesheet">
 
+    @livewireStyles
+
     @stack('style-after')
     
 </head>

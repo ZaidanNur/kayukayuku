@@ -83,11 +83,9 @@
     </div>
     <hr>
     <div class="section-best-selling-product row justify-content-start pe-3">
-        <!-- 
-            Bagian bawah ini nanti di looping
-         -->
+        <!-- Bagian bawah ini nanti di looping-->
         @foreach ($items as $item)
-            <div class="col-4">
+            <div class="col-4 my-2">
                 <div class="card product-card mb-3 h-100">
                     @php
                         $is_image = false

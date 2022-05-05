@@ -20,9 +20,11 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     
     
-
+    
+    
     @include("includes.style")    
     @stack("after-style")
+    @livewireStyles
 
 
 </head>
@@ -37,6 +39,7 @@
             @yield('content')
         </main>
     </div>
+    @livewireScripts
     @stack("after-script")
 </body>
 </html>

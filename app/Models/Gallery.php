@@ -16,7 +16,7 @@ class Gallery extends Model
 
     ];
 
-    protected $hidden =[
+    protected $hidden = [
         
     ];
 

@@ -71,7 +71,9 @@
                                     @endif                                  
                                 @endforeach
                             </td>
-                            <td class="product-stock">{{ $item-> product_stock }}</td>
+                            <td >
+                                @livewire('change-stock', ['item' => $item])
+                            </td>
                             <td class="product-price" style="display: none;">{{ $item->product_price }}</td>
                             <td>@currency($item->product_price)</td>
                             <td class="product-desc">{{ $item-> product_description }}</td>

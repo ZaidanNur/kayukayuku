@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ProductRequest;
+use App\Models\ChangeLog;
 
 class ProductController extends Controller
 {
@@ -47,7 +48,17 @@ class ProductController extends Controller
         $data = $request ->all();
         $data['slug']=Str::slug($request->product_name);
 
-        Product::create($data);
+
+        $product = Product::create($data);
+        
+        $log = [
+            'product_id'=>$product->id,
+            'stock_added'=>$data['product_stock'],
+            'stock_reduced'=> null,
+        ];
+
+        
+        ChangeLog::create($log);
 
         return redirect()->route('products.index')->with('success',($request->product_name.' product data added successfully'));
     }
@@ -104,6 +115,14 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $item = Product::findOrFail($id);
+        $log = [
+            'product_id'=>$item->id,
+            'stock_added'=>null,
+            'stock_reduced'=> $item->product_stock,
+        ];
+
+        
+        ChangeLog::create($log);
         $item -> delete();
 
         return redirect()->route('products.index');
