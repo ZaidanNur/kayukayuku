@@ -67,7 +67,7 @@
                             </td>
                             <td id="product-name" colspan="2">
                                 
-                                    {{ $item->product->product_name }}
+                                    {{$item->product ? $item->product->product_name : "Data telah dihapus" }}
                             </td>
                             <td colspan="4">
                                 {{ $item->stock_added }}

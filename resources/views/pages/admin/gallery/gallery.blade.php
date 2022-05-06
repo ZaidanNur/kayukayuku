@@ -73,7 +73,7 @@
                                     {{ $item->id }}
                                 </td>
                                 <td id="product-name" colspan="2">
-                                    {{ $item->products->product_name }}
+                                    {{ $item->products ? $item->products->product_name : "Data telah dihapus" }}
                                 </td>
                                 <td colspan="4">
                                     <img class="img-thumbnail" src="{{ Storage::url($item->image) }}" alt="Product image" width="200px">  
