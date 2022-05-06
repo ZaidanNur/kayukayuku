@@ -79,63 +79,65 @@
     </div>
 </div>
 
-<!-- Modal Edit Produk -->
-<div class="modal fade edit-product-modal" id="editProductModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-        <div class="modal-body justify-content-center">
-            <div class="container-fluid mt-3">
-                <div class="row justify-content-center">
+@if (! $items == null)
+    <!-- Modal Edit Produk -->
+    <div class="modal fade edit-product-modal" id="editProductModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body justify-content-center">
+                <div class="container-fluid mt-3">
+                    <div class="row justify-content-center">
 
-                    <div class="flex">
-                        <h3>Edit Data</h3>
-                    </div>
-                    <div class="col-md-12">
-                        @if($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
+                        <div class="flex">
+                            <h3>Edit Data</h3>
+                        </div>
+                        <div class="col-md-12">
+                            @if($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
 
-                        <form action="{{ route('products.update',$item->id) }}" method="post">
-                            @csrf
-                            @method('PUT')
-            
-                            <div class="form-group">
-                                <label for="product_name">Nama Produk</label>
-                                <input class="form-control" type="text" name="product_name" value="{{ $item->product_name }}" placeholder="Nama Produk">
-                            </div>
-            
-                            <div class="form-group" style="display:none;">
-                                <label for="product_stock">Stok</label>
-                                <input class="form-control" type="number" name="product_stock" value="{{  $item->product_stock }}" placeholder="Stok">
-                            </div>
-            
-                            <div class="form-group">
-                                <label for="product_price">Harga</label>
-                                <input class="form-control" type="number" name="product_price" value="{{  $item->product_price}}" placeholder="Harga">
-                            </div>
-            
-                            <div class="form-group">
-                                <label for="product_description">Deskripsi</label>
-                                <textarea name="product_description"  rows="10" class="d-block w-100 form-control" value='{{  $item->product_description}}' placeholder="Deskripsi"></textarea>
-                            </div>
-            
-                            <button type="submit" class="btn btn-primary btn-block">
-                                Ubah
-                            </button>
-                            
-                        </form>
+                            <form action="{{ route('products.update',$item->id) }}" method="post">
+                                @csrf
+                                @method('PUT')
+                
+                                <div class="form-group">
+                                    <label for="product_name">Nama Produk</label>
+                                    <input class="form-control" type="text" name="product_name" value="{{ $item->product_name }}" placeholder="Nama Produk">
+                                </div>
+                
+                                <div class="form-group" style="display:none;">
+                                    <label for="product_stock">Stok</label>
+                                    <input class="form-control" type="number" name="product_stock" value="{{  $item->product_stock }}" placeholder="Stok">
+                                </div>
+                
+                                <div class="form-group">
+                                    <label for="product_price">Harga</label>
+                                    <input class="form-control" type="number" name="product_price" value="{{  $item->product_price}}" placeholder="Harga">
+                                </div>
+                
+                                <div class="form-group">
+                                    <label for="product_description">Deskripsi</label>
+                                    <textarea name="product_description"  rows="10" class="d-block w-100 form-control" value='{{  $item->product_description}}' placeholder="Deskripsi"></textarea>
+                                </div>
+                
+                                <button type="submit" class="btn btn-primary btn-block">
+                                    Ubah
+                                </button>
+                                
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        </div>
     </div>
-    </div>
-</div>
+@endif
 
 

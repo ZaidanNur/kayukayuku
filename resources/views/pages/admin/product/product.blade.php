@@ -58,52 +58,53 @@
                     </thead>
                     
                     <tbody>
-                        @forelse ($items as $item)
-                        {{-- 'product_name','slug','product_stock','product_price','product_description' --}}
-                        <tr  class="content-row">
-                            <td class="product-id" style="display: none;">{{ $item->id }}</td>
-                            <td class="product-name" id="productName">{{ $item-> product_name }}</td>
-                            <td class="product-img">
-                                @foreach ($galleries as $galerry)
-                                    @if ($galerry->product_id == $item->id)
-                                        <img src="{{ Storage::url($galerry->image) }}" alt="{{ $item->product_name }}" width="200px">  
-                                        @break                         
-                                    @endif                                  
-                                @endforeach
-                            </td>
-                            <td >
-                                @livewire('change-stock', ['item' => $item])
-                            </td>
-                            <td class="product-price" style="display: none;">{{ $item->product_price }}</td>
-                            <td>@currency($item->product_price)</td>
-                            <td class="product-desc">{{ $item-> product_description }}</td>
-                            <td class="table-action">
-                                {{-- href="{{ route('products.edit',$item->id) }}"  --}}
-                                <a href="{{ route('product-details',$item->id) }}" class="btn btn-edit btn-info text-white" style="min-width: 45px;margin: 5px">
-                                    <i class="fa-solid fa-eye"></i>
-                                </a>
-                                <a class="btn btn-edit btn-info text-white" style="min-width: 45px;margin: 5px"  data-bs-toggle="modal" data-bs-target="#editProductModal"><i class="fa-solid fa-pen-to-square" >
-                                    </i>
-                                </a>
+                        @if (! $items == null)
+                            @foreach ($items as $item)
+                            <tr  class="content-row">
+                                <td class="product-id" style="display: none;">{{ $item->id }}</td>
+                                <td class="product-name" id="productName">{{ $item-> product_name }}</td>
+                                <td class="product-img">
+                                    @foreach ($galleries as $galerry)
+                                        @if ($galerry->product_id == $item->id)
+                                            <img src="{{ Storage::url($galerry->image) }}" alt="{{ $item->product_name }}" width="200px">  
+                                            @break                         
+                                        @endif
+                                    @endforeach
+                                </td>
+                                <td >
+                                    @livewire('change-stock', ['item' => $item])
+                                </td>
+                                <td class="product-price" style="display: none;">{{ $item->product_price }}</td>
+                                <td>@currency($item->product_price)</td>
+                                <td class="product-desc">{{ $item-> product_description }}</td>
+                                <td class="table-action">
+                                    {{-- href="{{ route('products.edit',$item->id) }}"  --}}
+                                    <a href="{{ route('product-details',$item->id) }}" class="btn btn-edit btn-info text-white" style="min-width: 45px;margin: 5px">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </a>
+                                    <a class="btn btn-edit btn-info text-white" style="min-width: 45px;margin: 5px"  data-bs-toggle="modal" data-bs-target="#editProductModal"><i class="fa-solid fa-pen-to-square" >
+                                        </i>
+                                    </a>
 
-                                <form action="{{ route('products.destroy',$item->id) }}" method="POST" class="d-inline">
-                                    @csrf
-                                    @method('delete')
-                                    <button class="btn btn-danger" style="min-width: 45px; margin: 5px">
-                                        <i class="fa-solid fa-trash-can"></i>
-                                    </button>
-                                </form>
+                                    <form action="{{ route('products.destroy',$item->id) }}" method="POST" class="d-inline">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="btn btn-danger" style="min-width: 45px; margin: 5px">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </button>
+                                    </form>
 
-                            </td>
-                            
-                        </tr>
-                        @empty
+                                </td>
+                                
+                            </tr>
+                            @endforeach
+                        @else
                             <tr>
                                 <td colspan="10" class="text-center">
                                     Data Kosong
                                 </td>
                             </tr>
-                        @endforelse
+                        @endif
                     </tbody>
 
                 </table>

@@ -21,6 +21,10 @@ class ProductController extends Controller
     {
         $items = Product::all();
         $galleries = Gallery::all();
+        
+        if ($items->count()==0) {
+            $items = null;
+        }
         return view('pages.admin.product.product',[
             'items'=>$items,
             'galleries'=>$galleries

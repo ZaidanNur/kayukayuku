@@ -55,58 +55,57 @@
                         @php
                             $num = 1;
                         @endphp
-                        @forelse ($items as $item)
-                        {{-- 'gallery_name','slug','gallery_stock','gallery_price','gallery_description' --}}
-                        <tr  class="content-row">
-                            <td colspan="2">
-                                {{ $num }}
-                                @php
-                                    $num++;
-                                @endphp
-                            </td>
-                            <td id="product-id" style="display: none">
-                                {{ $item->product_id }}
-                            </td>
-                            <td id="gallery-id" style="display: none">
-                                {{ $item->id }}
-                            </td>
-                            <td id="product-name" colspan="2">
-                                @foreach ($products as $product)
-                                    @if ($item->product_id == $product->id)
-                                        {{ $product->product_name }}
-                                    @endif
-                                @endforeach
-                            </td>
-                            <td colspan="4">
-                                <img class="img-thumbnail" src="{{ Storage::url($item->image) }}" alt="Product image" width="200px">  
-                            </td>
-                            <td class="table-action">
-                                {{-- href="{{ route('galleries.edit',$item->id) }}"  --}}
-                                {{-- <a href="{{ route('gallery-details',$item->id) }}" class="btn btn-edit btn-info text-white" style="min-width: 45px">
-                                    <i class="fa-solid fa-eye"></i>
-                                </a> --}}
-                                <a class="btn btn-edit btn-info text-white" style="min-width: 45px"  data-bs-toggle="modal" data-bs-target="#editGalleryModal"><i class="fa-solid fa-pen-to-square" >
-                                    </i>
-                                </a>
+                        
+                        @if ($items->isNotEmpty())
+                            @foreach ($items as $item)
+                            {{-- 'gallery_name','slug','gallery_stock','gallery_price','gallery_description' --}}
+                            <tr  class="content-row">
+                                <td colspan="2">
+                                    {{ $num }}
+                                    @php
+                                        $num++;
+                                    @endphp
+                                </td>
+                                <td id="product-id" style="display: none">
+                                    {{ $item->product_id }}
+                                </td>
+                                <td id="gallery-id" style="display: none">
+                                    {{ $item->id }}
+                                </td>
+                                <td id="product-name" colspan="2">
+                                    {{ $item->products->product_name }}
+                                </td>
+                                <td colspan="4">
+                                    <img class="img-thumbnail" src="{{ Storage::url($item->image) }}" alt="Product image" width="200px">  
+                                </td>
+                                <td class="table-action">
+                                    {{-- href="{{ route('galleries.edit',$item->id) }}"  --}}
+                                    {{-- <a href="{{ route('gallery-details',$item->id) }}" class="btn btn-edit btn-info text-white" style="min-width: 45px">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </a> --}}
+                                    <a class="btn btn-edit btn-info text-white" style="min-width: 45px"  data-bs-toggle="modal" data-bs-target="#editGalleryModal"><i class="fa-solid fa-pen-to-square" >
+                                        </i>
+                                    </a>
 
-                                <form action="{{ route('galleries.destroy',$item->id) }}" method="POST" class="d-inline">
-                                    @csrf
-                                    @method('delete')
-                                    <button class="btn btn-danger" style="min-width: 45px; ">
-                                        <i class="fa-solid fa-trash-can"></i>
-                                    </button>
-                                </form>
+                                    <form action="{{ route('galleries.destroy',$item->id) }}" method="POST" class="d-inline">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="btn btn-danger" style="min-width: 45px; ">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </button>
+                                    </form>
 
-                            </td>
-                            
-                        </tr>
-                        @empty
+                                </td>
+                                
+                            </tr>                                
+                            @endforeach
+                        @else
                             <tr>
                                 <td colspan="10" class="text-center">
                                     Data Kosong
                                 </td>
                             </tr>
-                        @endforelse
+                        @endif
                     </tbody>
 
                 </table>

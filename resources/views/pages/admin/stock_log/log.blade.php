@@ -6,7 +6,7 @@
 @section('content')
 
     <div class="d-sm-flex align-items-center justify-content-between mb-4 px-3 mt-3">
-        <h1 class="h3 mb-0 text-gray-800">Data Gambar</h1>
+        <h1 class="h3 mb-0 text-gray-800">Data Riwayat Stok Barang</h1>
     </div>
 
     <div class="container-fluid pt-4 px-3">
@@ -25,10 +25,6 @@
                 {{ session('success') }}
             </div>
         @endif
-
-        <a href='#' class="btn-sm btn-add-product btn-primary shadow-s" data-bs-toggle="modal" data-bs-target="#createGalleryModal">
-            <i class="fa-solid fa-circle-plus me-2"></i>Tambah
-        </a>
     </div>
 
     <div class="row px-3">
@@ -70,23 +66,8 @@
                                 {{ $item->id }}
                             </td>
                             <td id="product-name" colspan="2">
-                                @php
-                                    $is_found = false
-                                @endphp
-                                @foreach ($products as $product)
-                                    @if ($item->product_id == $product->id)
-                                        {{ $product->product_name }}
-                                        @php
-                                            $is_found = true
-                                        @endphp                                        
-                                    @endif
-                                @endforeach
-
-                                @if ($is_found)
-                                    
-                                @else
-                                    Data produk telah dihapus
-                                @endif
+                                
+                                    {{ $item->product->product_name }}
                             </td>
                             <td colspan="4">
                                 {{ $item->stock_added }}
