@@ -42,7 +42,7 @@
                             <th>
                                 Foto
                             </th>
-                            <th>
+                            <th class="text-center">
                                 Stok
                             </th>
                             <th>
@@ -64,14 +64,31 @@
                                 <td class="product-id" style="display: none;">{{ $item->id }}</td>
                                 <td class="product-name" id="productName">{{ $item-> product_name }}</td>
                                 <td class="product-img">
-                                    @foreach ($galleries as $galerry)
-                                        @if ($galerry->product_id == $item->id)
-                                            <img src="{{ Storage::url($galerry->image) }}" alt="{{ $item->product_name }}" width="200px">  
+                                    @php
+                                        $isImage = false;
+                                    @endphp
+                                    @foreach ($galleries as $gallery)
+                                        @if ($gallery->product_id == $item->id)
+                                            <div class="d-flex flex-column">
+                                                <img src="{{ Storage::url($gallery->image) }}" alt="{{ $item->product_name }}" width="200px">  
+                                                <a class="btn-edit-image" href="#" data-bs-toggle="modal" data-bs-target="#editGalleryModal">Edit Foto</a>
+                                                <td class="gallery-id" style="display: none;">{{ $gallery->id }}</td>
+                                            </div>
+                                            @php
+                                                $isImage=true;
+                                            @endphp
                                             @break                         
                                         @endif
                                     @endforeach
+
+                                    @if ($isImage)
+                                        
+                                    @else
+                                        <a href="#" class="btn btn-primary mx-auto btn-add-image" data-bs-toggle="modal" data-bs-target="#createGalleryModal">Tambah Foto</a>
+                                    @endif
+                                    
                                 </td>
-                                <td >
+                                <td class="justify-content-center">
                                     @livewire('change-stock', ['item' => $item])
                                 </td>
                                 <td class="product-price" style="display: none;">{{ $item->product_price }}</td>
@@ -86,13 +103,13 @@
                                         </i>
                                     </a>
 
-                                    <form action="{{ route('products.destroy',$item->id) }}" method="POST" class="d-inline">
+                                    {{-- <form action="{{ route('products.destroy',$item->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('delete')
                                         <button class="btn btn-danger" style="min-width: 45px; margin: 5px">
                                             <i class="fa-solid fa-trash-can"></i>
                                         </button>
-                                    </form>
+                                    </form> --}}
 
                                 </td>
                                 
@@ -147,6 +164,50 @@
 
                 $('#backToAddBtn').on('click',function () {
                     $('#createProductModal').modal('show');
+                });
+
+
+                $('table').on('click', '.btn-edit-image', function () {
+                    var $tr = $(this).closest('tr');
+
+                    var galleryID = $tr.find('.gallery-id').html();
+                    var productID = $tr.find('.product-id').html();
+                    var productName = $tr.find('.product-name').html();
+
+                    var route = '{{ route("galleries.update", ":id" ) }}';
+                    var url = route.replace(':id',galleryID);
+
+                    
+                    var modal = $('.edit-gallery-modal');
+                    modal.find('select[name="product_id"]').find('#selected-prev').html(productName);
+                    modal.find('select[name="product_id"]').find('#selected-prev').val(productID);
+
+
+                    modal.find('form').attr('action',url);
+                });
+
+                $('#btnAddGallery').on('click',function () {
+                    $('#addGallery').submit();
+                });
+
+                $('#simpanGallery').on('click',function () {
+                    $('#createGalleryModal').modal('hide');
+                });
+
+                $('#backToAddBtn').on('click',function () {
+                    $('#createGalleryModal').modal('show');
+                });
+
+                $('table').on('click','.btn-add-image',function () {
+                    var $tr = $(this).closest('tr');
+
+                    var productID = $tr.find('.product-id').html();
+                    var productName = $tr.find('.product-name').html();
+
+                    
+                    var modal = $('.create-gallery-modal');
+                    modal.find('select[name="product_id"]').find('#selected-prev').html(productName);
+                    modal.find('select[name="product_id"]').find('#selected-prev').val(productID);
                 });
                 
             });

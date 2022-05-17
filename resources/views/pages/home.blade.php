@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-@if($errors->any())
+    @if($errors->any())
         <div class="alert alert-danger">
             <ul>
                 @foreach($errors->all() as $error)
@@ -18,9 +18,6 @@
         <p>
             100% original & Foodgrade !!
         </p>
-        <a href="{{ route('company') }}" class="btn btn-explore px-4 mt-4">
-            EXPLORE
-        </a>
     </div>
 </header>
 
@@ -94,20 +91,8 @@
 
                     <div class="card-body">
                         <h5 class="card-title">{{ $item->product_name }}</h5>
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-
+                        <p class="card-text" id="id-produk" style="display: none">{{ $item->id }}</p>
                         <p class="card-text">{{ $item->product_description }}</p>
-                        {{-- <ul>
-                            <li>
-                                Bahan baku mahoni
-                            </li>
-                            <li>
-                                Pengerjaan dengan mesin CNC dan amplas
-                            </li>
-                            <li>
-                                Tebal -+2,5 cm
-                            </li>
-                        </ul> --}}
                     </div>
                 </div>
             </div>
@@ -135,4 +120,16 @@
     </div>
 @endsection
 
-
+@push('after-script')
+    <script>
+        $(document).ready(function () {
+            $('.col-4').on('click',function () {
+                var productCard = $(this).find('.card');
+                var idProduk = productCard.find('#id-produk').html();
+                var route = "{{ route('product-details',':id') }}";
+                var url = route.replace(':id',idProduk);
+                location.href = url;
+            });
+        });
+    </script>
+@endpush

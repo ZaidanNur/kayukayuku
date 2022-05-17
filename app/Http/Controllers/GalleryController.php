@@ -53,7 +53,7 @@ class GalleryController extends Controller
         
         Gallery::create($data);
 
-        return redirect()->route('galleries.index')->with('success',('Gallery data for '.$product->product_name.' added successfully'));
+        return redirect()->route('products.index')->with('success',('Gallery data for '.$product->product_name.' added successfully'));
     }
 
     /**
@@ -98,7 +98,7 @@ class GalleryController extends Controller
 
         $item -> update($data);
 
-        return redirect()->route('galleries.index')->with('success',('Gallery data for '.$product->product_name.' has been successfully updated'));
+        return redirect()->route('products.index')->with('success',('Gallery data for '.$product->product_name.' has been successfully updated'));
     }
 
     /**

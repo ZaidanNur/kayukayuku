@@ -11,7 +11,7 @@
         <!-- Content Start -->
         <div class="content">
             @include('includes.admin.navbar')
-            @include('modal.logoutConfirm')
+            @include('pages.modals')
             @yield('content')
         </div>
         <!-- Content End -->

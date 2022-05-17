@@ -82,11 +82,12 @@
             <button id="saveButton" style="display: none" class="btn btn-primary">
                 {{ __('Simpan') }}
             </button>
-            <button id="cancelButton" type="button" class="btn btn-danger">
+            <a id="cancelButton" type="button" class="btn btn-danger">
                 {{ __('Batal') }}
+            </a>
         </form>
         
-        </button>
+        
 
     </section>
 
@@ -118,6 +119,8 @@
                 $("textarea").attr("readonly",false);
                 $("#editButton").hide();
                 $("#saveButton").show();
+                $("#cancelButton").attr('href','#')
+
 
             });
 
@@ -126,6 +129,7 @@
                 $("textarea").attr("readonly",true);
                 $("#editButton").show();
                 $("#saveButton").hide();
+                $("#cancelButton").attr('href','{{ route("home") }}')
                 
             });
 
@@ -135,6 +139,7 @@
                 $("textarea").attr("readonly",true);
                 $("#editButton").show();
                 $("#saveButton").hide();
+                
             });
         });
 

@@ -9,11 +9,12 @@
             </a>
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav ms-5 me-auto">
-                <li class="nav-item me-5">
+                {{-- <li class="nav-item me-5">
                     <a class="nav-link" href="#">Product</a>
-                </li>
+                </li> --}}
                 <li class="nav-item me-5">
-                    <a class="nav-link" href="{{ route('company') }}">About</a>
+                    <a class="nav-link" href="{{ route('company') }}" style="color: #4e030e;font-family: Montserrat;
+                    font-weight: 400;">{{ __('Tentang') }}</a>
                 </li>
             </ul>
 
@@ -25,7 +26,7 @@
                     @if (Route::has('login'))
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="modal" data-bs-target="#loginModal">
-                                <div class="btn btn-primary login-button">{{ __('Login') }}</div>
+                                <div class="btn btn-primary login-button">{{ __('Masuk') }}</div>
                             </a>
                         </li>
                     @endif
@@ -34,7 +35,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="modal" data-bs-target="#registerModal">
                                 
-                            <div class="btn btn-primary register-button">{{ __('Register') }}</div>
+                            <div class="btn btn-primary register-button">{{ __('Daftar') }}</div>
                             </a>
                         </li>
                     @endif
@@ -50,14 +51,16 @@
                                 <i class="fa-solid fa-arrow-right-from-bracket p-2  me-2"> </i>{{ __('Logout') }}
                             </button>
 
-                            <a href="{{ route('profile',Auth::user()->id) }}" class="btn dropdown-item">
-                                <i class="fa-solid fa-user-alt p-2 me-2"></i>{{ __('Profile') }}
-                            </a>
+                            @role('customer')
+                                <a href="{{ route('profile',Auth::user()->id) }}" class="btn dropdown-item">
+                                    <i class="fa-solid fa-user-alt p-2 me-2"></i>{{ __('Profile') }}
+                                </a>
 
-                            <a href="#" class="btn dropdown-item">
-                                <i class="fa-solid fa-cart-shopping p-2 me-2"></i>{{ __('
-                                Shopping Cart') }}
-                            </a>
+                                <a href="#" class="btn dropdown-item">
+                                    <i class="fa-solid fa-cart-shopping p-2 me-2"></i>{{ __('
+                                    Shopping Cart') }}
+                                </a>
+                            @endrole
 
                             @role('admin')
                                     <a href="{{ route('dashboard') }}" class="btn dropdown-item">

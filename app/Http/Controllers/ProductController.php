@@ -20,7 +20,7 @@ class ProductController extends Controller
     public function index()
     {
         $items = Product::all();
-        $galleries = Gallery::all();
+        $galleries = Gallery::with(['products'])->orderBy('product_id','asc')->get();
         
         if ($items->count()==0) {
             $items = null;

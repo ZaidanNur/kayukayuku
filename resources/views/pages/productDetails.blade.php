@@ -12,7 +12,7 @@
 
                     @foreach ($galleries as $gallery)
                         @if ($gallery->product_id == $item->id)
-                            <img src="{{ $gallery->image }}" class="img-fluid" alt="{{ $item->product_name }}">
+                            <img src="{{ Storage::url($gallery->image) }}" class="img-fluid" alt="{{ $item->product_name }}">
                             @php
                                 $is_image = true
                             @endphp

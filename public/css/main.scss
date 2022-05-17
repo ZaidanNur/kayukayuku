@@ -156,19 +156,26 @@
             color: #4e030e;
         }
         .btn {
-            width: 230px;
+            width: 350px;
             border-radius: 20px;
         }
         .btn-primary {
             background-color: #625230;
             font-family: Montserrat;
-            font-weight: 700;
+            font-weight: 600;
             text-transform: uppercase;
             color: #E5E5E5;
             border-color: transparent;
             &:hover {
                 background-color: #756440;
             }
+        }
+        .btn-danger {
+            font-family: Montserrat;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #E5E5E5;
+            border-color: transparent;
         }
         .btn-link {
             color: #4e030e;

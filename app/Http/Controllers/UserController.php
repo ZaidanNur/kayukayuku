@@ -80,7 +80,7 @@ class UserController extends Controller
 
         $item -> update($data);
 
-        return redirect()->route('profile',$id);
+        return redirect()->route('profile',$id)->with('success','Data berhasil dirubah!');
     }
 
     /**

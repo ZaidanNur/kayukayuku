@@ -31,9 +31,8 @@
 <body>
     <div id="app">
         @include('includes.navbar')
-        @include('modal.logoutConfirm')
-        @include('modal.loginModal')
-        @include('modal.registerModal')
+        @include('pages.modals')
+        @include('sweetalert::alert')
         
         <main class="py-4">
             @yield('content')
