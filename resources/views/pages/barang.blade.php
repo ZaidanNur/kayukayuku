@@ -10,59 +10,12 @@
             </ul>
         </div>
     @endif
-<header>
-    <div class="text-center">
-        <h1>
-            Premium Handycraft
-        </h1>
-        <p>
-            100% original & Foodgrade !!
-        </p>
-    </div>
-</header>
-
-<div class="container">
-    <section class="section-stats row justify-content-center" id="stats">
-        <div class="col-3 col-md-2 stats-detail">
-            <h2>
-                6000
-            </h2>
-            <p>
-                Sold/Month
-            </p>
-        </div>
-        <div class="col-3 col-md-2 stats-detail">
-            <h2>
-                30
-            </h2>
-            <p>
-                City
-            </p>
-        </div>
-        <div class="col-3 col-md-2 stats-detail">
-            <h2>
-                4
-            </h2>
-            <p>
-                Countries
-            </p>
-        </div>
-        <div class="col-3 col-md-2 stats-detail">
-            <h2>
-                15
-            </h2>
-            <p>
-                Reseller
-            </p>
-        </div>
-    </section>
-</div>
 
 @guest
 @else
 <div class="container mt-4">
     <div class="best-selling-product-title">
-        PRODUK TERLARIS
+        DATA BARANG
     </div>
     <hr>
     <div class="section-best-selling-product row justify-content-start pe-3">
@@ -94,6 +47,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $item->product_name }}</h5>
                         <p class="card-text" id="id-produk" style="display: none">{{ $item->id }}</p>
+                        <p class="card-text">@currency($item->product_price)</p>
                         <p class="card-text">{{ $item->product_description }}</p>
                     </div>
                 </div>

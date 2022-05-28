@@ -77,60 +77,6 @@
         </div>
     </section>
 
-<div class="container mt-4 product-collection">
-    <div class="best-selling-product-title text-center">
-        KOLEKSI PRODUK
-    </div>
-    <hr>
-    <div class="section-best-selling-product row justify-content-start pe-3">
-        <!-- Bagian bawah ini nanti di looping-->
-        @foreach ($items as $item)
-            <div class="col-4 my-2">
-                <div class="card product-card mb-3 h-100">
-                    @php
-                        $is_image = false
-                    @endphp
-
-                    @foreach ($galleries as $gallery)
-                        @if ($gallery->product_id == $item->id)
-                            <img src="{{ Storage::url($gallery->image) }}" class="card-img-top" alt="...">
-                            @php
-                                $is_image = true
-                            @endphp
-                        @endif
-                    @endforeach
-
-                    @if ($is_image)
-                        
-                    @else
-                    <img src="{{ url("images/img-not-found.jpg") }}" class="card-img-top" alt="...">
-                    @endif
-
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $item->product_name }}</h5>
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-
-                        <p class="card-text">{{ $item->product_description }}</p>
-                        {{-- <ul>
-                            <li>
-                                Bahan baku mahoni
-                            </li>
-                            <li>
-                                Pengerjaan dengan mesin CNC dan amplas
-                            </li>
-                            <li>
-                                Tebal -+2,5 cm
-                            </li>
-                        </ul> --}}
-                    </div>
-                </div>
-            </div>
-        @endforeach
-
-
-    </div>
-
-
     <div class="container">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
             <p class="col-md-4 mb-0 text-muted">&copy; 2022 KAYUKAYUKU</p>

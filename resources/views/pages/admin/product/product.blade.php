@@ -6,7 +6,7 @@
 @section('content')
 
     <div class="d-sm-flex align-items-center justify-content-between mb-4 px-3 mt-3">
-        <h1 class="h3 mb-0 text-gray-800">Data Produk</h1>
+        <h1 class="h3 mb-0 text-gray-800">Data Barang</h1>
     </div>
 
     <div class="container-fluid pt-4 px-3">
@@ -27,7 +27,7 @@
         @endif
 
         <a href='#' class="btn-sm btn-add-product btn-primary shadow-s" data-bs-toggle="modal" data-bs-target="#createProductModal">
-            <i class="fa-solid fa-circle-plus me-2"></i>Tambah
+            <i class="fa-solid fa-circle-plus me-2"></i>Tambah Data
         </a>
     </div>
 

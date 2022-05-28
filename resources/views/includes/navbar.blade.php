@@ -16,6 +16,13 @@
                     <a class="nav-link" href="{{ route('company') }}" style="color: #4e030e;font-family: Montserrat;
                     font-weight: 400;">{{ __('Tentang') }}</a>
                 </li>
+                @role('customer')
+                    <li class="nav-item me-5">
+                        <a class="nav-link" href="{{ route('barang') }}" style="color: #4e030e;font-family: Montserrat;
+                        font-weight: 400;">{{ __('Barang') }}</a>
+                    </li>
+                @endrole
+                
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -48,17 +55,21 @@
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <!-- Button trigger modal -->
                             <button type="button" class="btn dropdown-item" data-bs-toggle="modal" data-bs-target="#logoutModal">
-                                <i class="fa-solid fa-arrow-right-from-bracket p-2  me-2"> </i>{{ __('Logout') }}
+                                <i class="fa-solid fa-arrow-right-from-bracket p-2  me-2"> </i>{{ __('Keluar') }}
                             </button>
 
                             @role('customer')
                                 <a href="{{ route('profile',Auth::user()->id) }}" class="btn dropdown-item">
-                                    <i class="fa-solid fa-user-alt p-2 me-2"></i>{{ __('Profile') }}
+                                    <i class="fa-solid fa-user-alt p-2 me-2"></i>{{ __('Profil') }}
                                 </a>
 
                                 <a href="#" class="btn dropdown-item">
                                     <i class="fa-solid fa-cart-shopping p-2 me-2"></i>{{ __('
-                                    Shopping Cart') }}
+                                   Keranjang') }}
+                                </a>
+                                <a href="#" class="btn dropdown-item">
+                                    <i class="fa-solid fa-cart-shopping p-2 me-2"></i>{{ __('
+                                   Pesanan') }}
                                 </a>
                             @endrole
 

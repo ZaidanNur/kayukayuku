@@ -77,12 +77,15 @@
                 </div>
             </div>
             <button id="editButton" type="button" class="btn btn-primary">
-                {{ __('Edit') }}
+                {{ __('Ubah') }}
             </button>
             <button id="saveButton" style="display: none" class="btn btn-primary">
                 {{ __('Simpan') }}
             </button>
-            <a id="cancelButton" type="button" class="btn btn-danger">
+            <a id="cancelButton" type="button" style="display: none" class="btn btn-danger">
+                {{ __('Batal') }}
+            </a>
+            <a href="{{ route("home") }}" id="cancelHomeButton" type="button"   class="btn btn-danger">
                 {{ __('Batal') }}
             </a>
         </form>
@@ -119,7 +122,8 @@
                 $("textarea").attr("readonly",false);
                 $("#editButton").hide();
                 $("#saveButton").show();
-                $("#cancelButton").attr('href','#')
+                $("#cancelButton").show();
+                $("#cancelHomeButton").hide();
 
 
             });
@@ -129,7 +133,9 @@
                 $("textarea").attr("readonly",true);
                 $("#editButton").show();
                 $("#saveButton").hide();
-                $("#cancelButton").attr('href','{{ route("home") }}')
+                $("#cancelButton").hide();
+                $("#cancelHomeButton").show();
+
                 
             });
 

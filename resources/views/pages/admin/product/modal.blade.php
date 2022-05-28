@@ -24,26 +24,26 @@
 
                                     <div class="form-group">
                                         <label for="product_name">Nama Produk</label>
-                                        <input class="form-control" type="text" name="product_name" value="{{ old('product_name') }}">
+                                        <input class="form-control" type="text" name="product_name" placeholder="Nama Produk" value="{{ old('product_name') }}">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="product_stock">Stok</label>
-                                        <input class="form-control" type="text" name="product_stock" value="{{ old('product_stock') }}">
+                                        <input class="form-control" type="text" name="product_stock" placeholder="Stok" value="{{ old('product_stock') }}">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="product_price">Harga</label>
-                                        <input class="form-control" type="number" name="product_price" value="{{ old('product_price') }}">
+                                        <input class="form-control" type="number" name="product_price" placeholder="Harga" value="{{ old('product_price') }}">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="product_description">Deskripsi</label>
-                                        <textarea name="product_description"  rows="10" class="d-block w-100 form-control" value='{{ old('product_description') }}'></textarea>
+                                        <textarea name="product_description"  rows="10" class="d-block w-100 form-control" placeholder="Deskripsi" value='{{ old('product_description') }}'></textarea>
                                     </div>
 
-                                    <button type="button" class="btn btn-danger btn-block mt-3" data-bs-dismiss="modal">Batal</button>
-                                    <button id="simpanProduct" type="button" class="btn btn-primary btn-block mt-3" data-bs-toggle="modal" data-bs-target="#addConfirmModal">
+                                    <button type="button" class="btn btn-danger btn-block mt-3" data-bs-dismiss="modal">Kembali</button>
+                                    <button id="simpanProduct" type="submit" class="btn btn-primary btn-block mt-3">
                                         Simpan
                                     </button>
                                     
@@ -56,7 +56,7 @@
     </div>
 </div>
 
-{{-- Modal konfirmasi create produk --}}
+{{-- Modal konfirmasi create produk
 <div class="modal fade add-confirm-modal" id="addConfirmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -77,7 +77,7 @@
         </div>
     </div>
     </div>
-</div>
+</div> --}}
 
 @if (! $items == null)
     <!-- Modal Edit Produk -->
@@ -126,8 +126,9 @@
                                     <textarea name="product_description"  rows="10" class="d-block w-100 form-control" value='{{  $item->product_description}}' placeholder="Deskripsi"></textarea>
                                 </div>
                 
+                                <button type="button" class="btn btn-danger btn-block" data-bs-dismiss="modal">Kembali</button>
                                 <button type="submit" class="btn btn-primary btn-block">
-                                    Ubah
+                                    Simpan
                                 </button>
                                 
                             </form>

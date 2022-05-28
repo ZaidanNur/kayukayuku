@@ -141,4 +141,14 @@ class ProductController extends Controller
             'galleries'=>$galleries
         ]);
     }
+
+    public function barang()
+    {
+        $items = Product::all();
+        $galleries = Gallery::all();
+        return view('pages.barang',[
+            'items' => $items,
+            'galleries'=>$galleries
+        ]);
+    }
 }

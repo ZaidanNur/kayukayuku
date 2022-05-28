@@ -26,6 +26,7 @@ Route::get('/', [HomepageController::class, 'index'])->name('home');
 Route::get('/company-profile', [CompanyController::class, 'index'])->name('company');
 Route::get('/user-profile/{id}', [ProfileController::class, 'index'])->name('profile');
 Route::get('/product-details/{id}',[ProductController::class,'details'])->name('product-details');
+Route::get('/barang',[ProductController::class,'barang'])->name('barang');
 // Route::get('/edit-profile/{id}', [UserController::class, 'edit'])->name('edit-profile');
 
 

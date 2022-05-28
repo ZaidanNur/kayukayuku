@@ -15,9 +15,9 @@
             </div>
         </div>
         <div class="navbar-nav w-100">
-            <a href="{{ route('products.index') }}" class="nav-item nav-link {{ request()->is('products') ? 'active' : ''}} {{ request()->is('dashboard') ? 'active' : ''}}"><i class="fa fa-cubes-stacked me-2"></i>Product</a>
-            <a href="{{ route('galleries.index') }}" class="nav-item nav-link {{ request()->is('galleries') ? 'active' : ''}}"><i class="fa fa-images me-2"></i>Galleries</a>
-            <a href="{{ route('changes_logs.index') }}" class="nav-item nav-link {{ request()->is('changes_logs') ? 'active' : ''}}"><i class="fa fa-clipboard-list me-2"></i>Stock Logs</a>
+            <a href="{{ route('products.index') }}" class="nav-item nav-link {{ request()->is('products') ? 'active' : ''}} {{ request()->is('dashboard') ? 'active' : ''}}"><i class="fa fa-cubes-stacked me-2"></i>Data Barang</a>
+            {{-- <a href="{{ route('galleries.index') }}" class="nav-item nav-link {{ request()->is('galleries') ? 'active' : ''}}"><i class="fa fa-images me-2"></i>Galleries</a> --}}
+            <a href="{{ route('changes_logs.index') }}" class="nav-item nav-link {{ request()->is('changes_logs') ? 'active' : ''}}" style="font-size: 18px"><i class="fa fa-clipboard-list me-2"></i>Riwayat Stok</a>
             <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
             <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
         </div>
