@@ -45,6 +45,7 @@ Route::get('/admin', function () {
 
 Route::middleware('role:admin')->group(function () {
     Route::get('/dashboard', [ProductController::class, 'index'])->name('dashboard');
+    Route::put('/change-stock-batch/{id}',[ProductController::class,'change_stock_batch'])->name('change-stock.batch');
 
     Route::resource('products',ProductController::class);
     Route::resource('galleries',GalleryController::class);

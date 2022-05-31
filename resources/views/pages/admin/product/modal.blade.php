@@ -216,7 +216,7 @@
     </div>
 </div>
 
-@if ( $items ->isNotEmpty())
+@if ( ! $items == null)
     <!-- Modal Edit Produk -->
     <div class="modal fade edit-gallery-modal" id="editGalleryModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -273,4 +273,39 @@
 @endif
 
 
+{{-- Modal Batch Action Stok --}}
+<div class="modal fade" id="stockModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-body justify-content-center">
+            <div class="flex">
+                <h3>Ubah Stok Barang</h3>
+                <p>Masukkan jumlah stok yang ingin ditambahkan atau dikurangi</p>
+            </div>
+
+            <form action="{{ route('change-stock.batch',$item->id) }}" method="post">
+                @csrf
+                @method('PUT')
+
+                <div class="form-group" style="display: none">
+                    <label for="product_name">Nama Produk</label>
+                    <input class="form-control" type="text" name="product_name" placeholder="Nama Produk" value="{{ old('product_name') }}">
+                </div>
+
+                <div class="form-group">                    
+                    <label for="product_stock">Perubahan Stok</label>
+                    <input class="form-control" type="number" name="stockChange" placeholder="0" >
+                </div>
+                <div class="form-text">
+                    *Tambahkan (-) untuk mengurangi
+                </div>
+                <button type="button" class="btn btn-danger btn-block mt-3" data-bs-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-primary btn-block mt-3">
+                    Ubah
+                </button>
+            </form>
+        </div>
+    </div>
+    </div>
+</div>
 

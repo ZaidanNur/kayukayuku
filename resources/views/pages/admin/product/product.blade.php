@@ -209,6 +209,21 @@
                     modal.find('select[name="product_id"]').find('#selected-prev').html(productName);
                     modal.find('select[name="product_id"]').find('#selected-prev').val(productID);
                 });
+
+                $('table').on('click','.product-stock',function () {
+                    var $tr = $(this).closest('tr');
+
+                    var productID = $tr.find('.product-id').html();
+                    var productName = $tr.find('.product-name').html();
+                    var route = '{{ route("change-stock.batch", ":id" ) }}';
+                    var url = route.replace(':id',productID);
+
+                    
+                    var modal = $('#stockModal');
+                    modal.find('input[name="product_name"]').val(productName);
+                    modal.find('form').attr('action',url);
+                    $('#stockModal').modal('show');
+                });
                 
             });
         </script>

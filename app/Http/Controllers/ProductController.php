@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ProductRequest;
 use App\Models\ChangeLog;
+use Illuminate\Http\Client\Response;
 
 class ProductController extends Controller
 {
@@ -150,5 +151,37 @@ class ProductController extends Controller
             'items' => $items,
             'galleries'=>$galleries
         ]);
+    }
+
+    public function change_stock_batch(Request $request,$id)
+    {
+
+        $data = $request ->all();
+        $item = Product::findOrFail($id);
+        
+        $newData = Product::findOrFail($id)->toArray();
+        $newData['product_stock'] = $newData['product_stock'] + $data['stockChange'];
+
+        if ($data['stockChange']>0) {
+            $log = [
+                'product_id'=>$id,
+                'stock_added'=> $data['stockChange'],
+                'stock_reduced'=> null,
+            ];
+        } else {
+            $log = [
+                'product_id'=>$id,
+                'stock_added'=> null,
+                'stock_reduced'=> $data['stockChange'],
+            ];
+        }
+        
+
+        
+        ChangeLog::create($log);
+
+        $item -> update($newData);
+        $change = $request->stockChange>0?'ditambah ':'dikurang ';
+        return redirect()->route('products.index')->with('success',('Stok '.$request->product_name.' berhasil '.$change.$request->stockChange));
     }
 }
