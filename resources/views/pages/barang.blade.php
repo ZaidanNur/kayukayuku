@@ -11,9 +11,15 @@
         </div>
     @endif
 
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
 @guest
 @else
-<div class="container mt-4">
+<div class="container mt-4 barang">
     <div class="best-selling-product-title">
         DATA BARANG
     </div>
@@ -44,11 +50,36 @@
                     <img src="{{ url("images/img-not-found.jpg") }}" class="card-img-top" alt="...">
                     @endif
 
-                    <div class="card-body">
+                    <div class="card-body gap-3">
                         <h5 class="card-title">{{ $item->product_name }}</h5>
                         <p class="card-text" id="id-produk" style="display: none">{{ $item->id }}</p>
                         <p class="card-text">@currency($item->product_price)</p>
-                        <p class="card-text">{{ $item->product_description }}</p>
+                        {{-- <p class="card-text">{{ $item->product_description }}</p> --}}
+                        <form action="{{ route("carts.store") }}" method="post">
+                            @csrf
+                            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                            <input type="hidden" name="product_id" value="{{ $item->id }}">
+                            <input type="hidden" name="jumlah">
+                            <div class="row mx-3">
+                                <?php
+                                $in_cart = false;
+                                ?>
+                                @foreach ($cart as $cart_item )
+                                    @if ($cart_item->product_id == $item->id)
+                                        <?php
+                                        $in_cart = true;
+                                        ?>
+                                    @endif
+                                @endforeach
+                                <button type="submit" class="btn btn-primary addToCart" {{ $in_cart ? 'disabled':'' }}>
+                                @if ($in_cart)
+                                    Di Keranjang
+                                @else
+                                    <i class="fa-solid fa-plus me-2"></i>Tambah
+                                @endif
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

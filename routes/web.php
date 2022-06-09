@@ -1,15 +1,17 @@
 <?php
 
-use App\Http\Controllers\ChangeLogController;
+use App\Models\ChangeLog;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomepageController;
-use App\Models\ChangeLog;
+use App\Http\Controllers\ChangeLogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,9 +33,9 @@ Route::get('/barang',[ProductController::class,'barang'])->name('barang');
 
 
 
-Route::get('/money', function () {
-    return view('pages.admin.money');
-});
+// Route::get('/money', function () {
+//     return view('pages.admin.money');
+// });
 
 Route::get('/product', function () {
     return view('product');
@@ -58,4 +60,6 @@ Route::middleware('role:admin')->group(function () {
 
 
 Route::resource('users',UserController::class);
+Route::resource('carts',CartController::class);
+Route::resource('orders',OrderController::class);
 Auth::routes(['verify'=>true]);

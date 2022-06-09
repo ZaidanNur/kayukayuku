@@ -16,12 +16,14 @@ class ChangeLogController extends Controller
      */
     public function index()
     {
-        $items = ChangeLog::all();
+        $items = Product::all();
         $products = Product::all();
+        $logs = ChangeLog::all();
 
         return view('pages.admin.stock_log.log',[
             'items'=> $items,
-            'products' => $products
+            'products' => $products,
+            'logs'=>$logs
         ]);
     }
 

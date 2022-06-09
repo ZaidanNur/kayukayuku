@@ -230,3 +230,73 @@
     </div>
 </div>
 
+<!-- Modal Create Produk -->
+<div class="modal fade create-product-modal" id="orderModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-body justify-content-center">
+            <div class="container-fluid mt-3">
+                <div class="row justify-content-center">
+                    <div class="col-md-12">
+                        @if($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+                            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                                <h1 class="h4 mb-0 text-gray-600">Pesan</h1>
+                            </div>
+                                <form class="gap-4" id="addProduct" action="{{ route('orders.store') }}" method="post">
+                                    @csrf
+
+                                    
+                                    <input id="product-id" type="hidden" name="product_id" value="">
+                                    <input id="cart-id" type="hidden" name="cart_id" value="">
+                                    <input id="amount" type="hidden" name="amount" value="">
+                                    @guest
+                                    @else
+                                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                        <div class="form-group mb-3">
+                                            <label for="product_name">Nama Pelanggan</label>
+                                            <input class="form-control" type="text" placeholder="Nama Pelanggan" value="{{ Auth::user()->name }}" disabled>
+                                        </div>
+                                    @endguest
+
+                                    <div class="form-group mb-3">
+                                        <label for="product_name">Produk</label>
+                                        <input id="productName" class="form-control" type="text" placeholder="Nama Pelanggan" value="" disabled>
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <label for="product_stock">Alamat Pelanggan</label>
+                                        <textarea name="address"  rows="4" class="d-block w-100 form-control" placeholder="Alamat Pelanggan"></textarea>
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <label for="phone_number">Nomor Telepon</label>
+                                        <input class="form-control" type="text" name="phone_number" placeholder="Nomor Telepon">
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <label for="note">Catatan</label>
+                                        <textarea name="note"  rows="4" class="d-block w-100 form-control" placeholder="Catatan"></textarea>
+                                    </div>
+
+                                    <button type="button" class="btn btn-danger btn-block mt-3" data-bs-dismiss="modal">Kembali</button>
+                                    <button id="simpanProduct" type="submit" class="btn btn-primary btn-block mt-3">
+                                        Simpan
+                                    </button>
+                                    
+                                </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>

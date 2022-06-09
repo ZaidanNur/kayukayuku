@@ -44,6 +44,9 @@
                             <th colspan="2">
                                 Produk Dikurang
                             </th>
+                            <th colspan="2">
+                                Waktu
+                            </th>
                         </tr>
                     </thead>
                     
@@ -51,7 +54,7 @@
                         @php
                             $num = 1;
                         @endphp
-                        @forelse ($items as $item)
+                        @forelse ($logs as $item)
                         <tr  class="content-row">
                             <td colspan="2">
                                 {{ $num }}
@@ -65,16 +68,19 @@
                             <td id="gallery-id" style="display: none">
                                 {{ $item->id }}
                             </td>
-                            <td id="product-name" colspan="2">
+                            <td id="product-name" colspan="4">
                                 
                                     {{$item->product ? $item->product->product_name : "Data telah dihapus" }}
                             </td>
-                            <td colspan="4">
+                            <td colspan="2">
                                 {{ $item->stock_added }}
                             </td>
-                            <td colspan="4">
+                            <td colspan="2">
                                 {{ $item->stock_reduced }}
-                            </td>                            
+                            </td>     
+                            <td colspan="2">
+                                {{ date('d-m-Y', strtotime($item->created_at)); }}
+                            </td>                       
                         </tr>
                         @empty
                             <tr>

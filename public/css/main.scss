@@ -376,3 +376,48 @@
             }
         }
     }
+    
+    .barang {
+        .addToCart {
+            color: #572121;
+            font-weight: 600;
+            background-color: #C8B687;
+            border-color: transparent;
+            &:hover {
+                color: #572121;
+                background-color: #dbcca4;
+                border-color: transparent;
+            }
+        }
+    }
+    
+    .cart {
+        .cart-title {
+            color: #625230;
+            font-family: Montserrat;
+            font-size: 30px;
+            font-weight: 700;
+        }
+        .product-price {
+            font-family: Montserrat;
+            font-weight: 700;
+            font-size: 20px;
+            color: #6A0918;
+        }
+    }
+    
+    .order {
+        #hargaBarang {
+            font-family: Montserrat;
+            font-weight: 700;
+            font-size: 18px;
+            color: #6A0918;
+        }
+    }
+    
+    .order-detail {
+        .order-detail-barang {
+            background-color: #d9d9d986;
+            border-radius: 4px;
+        }
+    }

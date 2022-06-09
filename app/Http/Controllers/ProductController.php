@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Gallery;
 use App\Models\Product;
+use App\Models\ChangeLog;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\ProductRequest;
-use App\Models\ChangeLog;
 use Illuminate\Http\Client\Response;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Admin\ProductRequest;
 
 class ProductController extends Controller
 {
@@ -147,9 +149,11 @@ class ProductController extends Controller
     {
         $items = Product::all();
         $galleries = Gallery::all();
+        $cart = Cart::where('user_id',Auth::user()->id)->get();
         return view('pages.barang',[
             'items' => $items,
-            'galleries'=>$galleries
+            'galleries'=>$galleries,
+            'cart'=>$cart
         ]);
     }
 

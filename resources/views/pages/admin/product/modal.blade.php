@@ -294,7 +294,7 @@
 
                 <div class="form-group">                    
                     <label for="product_stock">Perubahan Stok</label>
-                    <input class="form-control" type="number" name="stockChange" placeholder="0" >
+                    <input class="form-control" type="number" name="stockChange" placeholder="0" required>
                 </div>
                 <div class="form-text">
                     *Tambahkan (-) untuk mengurangi

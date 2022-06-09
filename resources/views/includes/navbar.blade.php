@@ -54,22 +54,18 @@
                     
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn dropdown-item" data-bs-toggle="modal" data-bs-target="#logoutModal">
-                                <i class="fa-solid fa-arrow-right-from-bracket p-2  me-2"> </i>{{ __('Keluar') }}
-                            </button>
+                            
 
                             @role('customer')
                                 <a href="{{ route('profile',Auth::user()->id) }}" class="btn dropdown-item">
                                     <i class="fa-solid fa-user-alt p-2 me-2"></i>{{ __('Profil') }}
                                 </a>
 
-                                <a href="#" class="btn dropdown-item">
-                                    <i class="fa-solid fa-cart-shopping p-2 me-2"></i>{{ __('
-                                   Keranjang') }}
+                                <a href="{{ route('carts.index') }}" class="btn dropdown-item">
+                                    <i class="fa-solid fa-cart-shopping p-2 me-2"></i>{{ __('Keranjang') }}
                                 </a>
-                                <a href="#" class="btn dropdown-item">
-                                    <i class="fa-solid fa-cart-shopping p-2 me-2"></i>{{ __('
-                                   Pesanan') }}
+                                <a href="{{ route('orders.index') }}" class="btn dropdown-item">
+                                    <i class="fas fa-boxes p-2 me-2"></i>{{ __('Pesanan') }}
                                 </a>
                             @endrole
 
@@ -78,6 +74,9 @@
                                         <i class="fa-solid fa-chart-line p-2 me-2"></i>{{ __('Dashboard') }}
                                     </a>
                             @endrole
+                            <button type="button" class="btn dropdown-item" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                                <i class="fa-solid fa-arrow-right-from-bracket p-2 me-2"> </i>{{ __('Keluar') }}
+                            </button>
                             
                         </div>
                     </li>
