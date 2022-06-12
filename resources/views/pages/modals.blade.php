@@ -230,7 +230,7 @@
     </div>
 </div>
 
-<!-- Modal Create Produk -->
+<!-- Modal Create Order -->
 <div class="modal fade create-product-modal" id="orderModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -263,7 +263,7 @@
                                         <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                                         <div class="form-group mb-3">
                                             <label for="product_name">Nama Pelanggan</label>
-                                            <input class="form-control" type="text" placeholder="Nama Pelanggan" value="{{ Auth::user()->name }}" disabled>
+                                            <input class="form-control" name="name" type="text" placeholder="Nama Pelanggan" value="">
                                         </div>
                                     @endguest
 
@@ -289,7 +289,57 @@
 
                                     <button type="button" class="btn btn-danger btn-block mt-3" data-bs-dismiss="modal">Kembali</button>
                                     <button id="simpanProduct" type="submit" class="btn btn-primary btn-block mt-3">
-                                        Simpan
+                                        Pesan
+                                    </button>
+                                    
+                                </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+{{-- Modal Cancel Order --}}
+<div class="modal fade create-product-modal" id="cancelOrderModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-body justify-content-center">
+            <div class="container-fluid mt-3">
+                <div class="row justify-content-center">
+                    <div class="col-md-12">
+                        @if($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+                            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                                <h1 class="h4 mb-0 text-gray-600">Pesan</h1>
+                            </div>
+                                <form class="gap-4" id="addProduct" action="{{ route('orders.cancel') }}" method="post">
+                                    @csrf
+
+                                    <input id="order-id" type="hidden" name="order_id" value="">
+                                    <div class="form-group mb-3">
+                                        <label for="reason">Alasan Pembatalan</label>
+                                        <select class="form-select" name="reason" aria-label="Default select example" required>
+                                            <option >Alasan Pembatalan</option>
+                                            <option value="Barang Salah">Barang Salah</option>
+                                            <option value="Alamat Salah">Alamat Salah</option>
+                                            <option value="Jumlah Salah">Jumlah Salah</option>
+                                            <option value="Lainnya">Lainnya</option>
+                                        </select>
+                                    </div>
+
+                                    <button type="button" class="btn btn-danger btn-block mt-3" data-bs-dismiss="modal">Kembali</button>
+                                    <button id="simpanProduct" type="submit" class="btn btn-primary btn-block mt-3">
+                                        Batalkan Pesanan
                                     </button>
                                     
                                 </form>

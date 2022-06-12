@@ -77,8 +77,8 @@
                 <span class="d-none d-lg-inline-flex">{{ Auth::user()->username }}</span>
             </a>
             <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                <a href="{{ route('profile',Auth::user()->id) }}" class="dropdown-item">My Profile</a>
-                <a href="#" class="dropdown-item">Settings</a>
+                <!-- <a href="{{ route('profile',Auth::user()->id) }}" class="dropdown-item">My Profile</a> -->
+                <!-- <a href="#" class="dropdown-item">Settings</a> -->
                 <a href="#" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#logoutModal">Log Out</a>
             </div>
         </div>

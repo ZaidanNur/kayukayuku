@@ -1,5 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
+@push('style-after')
+@endpush
 @section('content')
     @if($errors->any())
         <div class="alert alert-danger">

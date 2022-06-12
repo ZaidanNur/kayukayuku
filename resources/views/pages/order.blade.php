@@ -43,12 +43,21 @@
                         <div class="flex-grow-1 pe-3">
                             <div class="d-flex justify-content-between align-items-center border-bottom py-3">
                                 <div>
-                                    <h2>{{ $order->product->product_name }}</h2>
+                                    <h2>{{ $order->product->product_name }} <span style="color: red;font-size: 14px">{{ $order->status =='Dibatalkan Oleh Customer'?'(Dibatalkan)':'' }}</span></h2>
                                     <strong>@currency($order->product->product_price)</strong>
                                 </div>
-                                <div>
-                                    <button class="btn btn-primary">Konfirmasi Pembayaran</button>
-                                    <a href="{{ route('orders.show',$order) }}" class="btn btn-primary">Detail Pesanan</a>
+                                <div class="d-flex flex-column justify-content-end">
+                                    <div>
+                                        @if ($order->status == 'Menunggu Pembayaran')
+                                            <a href="{{ route('payment_confirmation',$order) }}" class="btn btn-primary" >Konfirmasi Pembayaran</a>
+                                        @endif
+                                        <a href="{{ route('orders.show',$order) }}"  class="btn btn-info">Detail Pesanan</a>
+                                    </div>
+                                    <div class="d-flex justify-content-end mt-2">
+                                        @if ($order->status == 'Menunggu Pembayaran')
+                                            <a id="btnCancelOrder" class="btn btn-danger"  data-bs-toggle="modal" data-order="{{  $order->id }}" data-bs-target="#cancelOrderModal">Batalkan Pesanan</a>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-between">
@@ -74,6 +83,13 @@
 
 @push('after-script')
     <script>
-        
+        $(document).ready(function () {
+            $('.card').on('click','#btnCancelOrder',function () {
+                var btn = $(this).closest('#btnCancelOrder');
+                var order_id = btn.data('order');
+
+                $('#order-id').val(order_id);
+            });
+        });
     </script>
 @endpush

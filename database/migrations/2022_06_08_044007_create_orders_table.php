@@ -16,17 +16,17 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->string('name');
             $table->unsignedBigInteger('product_id');
             $table->integer('amount');
             $table->string('phone_number');
             $table->text('address');
             $table->text('note');
-            $table->string('status')->default('Menunggu Pembayaran');
+            $table->string('status')->default('Menunggu Pembayaran'); // Menunggu Pembayaran, Menunggu Konfirmasi Admin, Diproses, Dikirim, Terkirim, Dibatalkan
             $table->date('order_date')->default(Carbon::now());
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('product_id')->references('id')->on('products');
         });
     }

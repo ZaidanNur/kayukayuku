@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Order;
+use App\Models\Gallery;
+use App\Models\CancelOrder;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
-use App\Models\Gallery;
+use Symfony\Component\HttpFoundation\Request;
 
 class OrderController extends Controller
 {
@@ -102,5 +104,19 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         //
+    }
+
+    public function cancel_order(UpdateOrderRequest $request)
+    {
+        $data = $request->all();
+        $order = Order::findOrFail($data['order_id']);
+        $new_order = Order::findOrFail($data['order_id'])->toArray();
+
+        $new_order['status'] = "Dibatalkan Oleh Customer";
+        $order->update($new_order);
+
+        CancelOrder::create($data);
+        
+        return redirect()->route('orders.index')->with('success',('Pesanan berhasil dibatalkan'));
     }
 }
