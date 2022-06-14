@@ -274,6 +274,7 @@
 
 
 {{-- Modal Batch Action Stok --}}
+@if($item != null)
 <div class="modal fade" id="stockModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -308,4 +309,5 @@
     </div>
     </div>
 </div>
+@endif
 
