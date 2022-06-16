@@ -1,6 +1,17 @@
 @extends('layouts.admin')
 
 @push('style-after')
+    <style>
+        .note-column{
+            max-width: 250px;
+            word-wrap: break-word;
+
+        }
+        .address-column{
+            max-width: 250px;
+            word-wrap: break-word;
+        }
+    </style>
 @endpush
 
 @section('content')
@@ -44,7 +55,7 @@
                             <th>
                                 Nama Customer
                             </th>
-                            <th>
+                            <th class="address-column">
                                 Alamat Customer
                             </th>
                             <th>
@@ -53,7 +64,7 @@
                             <th>
                                 Barang Pembelian
                             </th>
-                            <th>
+                            <th class="note-column">
                                 Catatan
                             </th>
                             <th>
@@ -79,7 +90,7 @@
                                         <td>
                                             {{ $order->name }}
                                         </td>
-                                        <td>
+                                        <td class="address-column">
                                             {{ $order->address }}
                                         </td>
                                         <td>
@@ -88,7 +99,7 @@
                                         <td>
                                             {{ $order->product->product_name }}
                                         </td>
-                                        <td>
+                                        <td class="note-column"> 
                                             {{ $order->note }}
                                         </td>
                                         <td>
@@ -159,7 +170,6 @@
     @push('script-after')
         <script>
             $(document).ready(function () {
-                // data-id="{{ $order->id }}" data-name="{{ $order->name }}" data-alamat="{{ $order->address }}" data-phone="{{ $order->phone_number }}" data-note="{{ $order->note }}" data-status="{{ $order->status }}
                 $('table').on('click', '.btn-edit', function () {
                     var order_id = $(this).data('id');
                     var name = $(this).data('name');

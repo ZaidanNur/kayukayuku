@@ -30,7 +30,9 @@
     <link href="{{ url("backend/dashboard/css/admin.css") }}" rel="stylesheet">
 
     @livewireStyles
-
+    <style>
+        
+    </style>
     @stack('style-after')
     
 </head>

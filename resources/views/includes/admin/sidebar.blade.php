@@ -19,7 +19,7 @@
             <a href="{{ route('order-admin.index') }}" class="nav-item nav-link {{ request()->is('*order-admin*') ? 'active' : ''}} " ><i class="fa fa-th me-2"></i>Data Pesanan</a>
             <!-- <a href="{{ route('galleries.index') }}" class="nav-item nav-link {{ request()->is('galleries') ? 'active' : ''}}"><i class="fa fa-images me-2"></i>Galleries</a> -->
             <a href="{{ route('changes_logs.index') }}" class="nav-item nav-link {{ request()->is('changes_logs') ? 'active' : ''}}" style=""><i class="fa fa-clipboard-list me-2"></i>Riwayat Stok</a>
-            <a href="form.html" class="nav-item nav-link"><i class="fa fa-sack-dollar"></i></i>Keuangan</a>
+            <a href="{{ route('keuangan.index') }}" class="nav-item nav-link {{ request()->is('*keuangan*') ? 'active' : ''}}"><i class="fa fa-sack-dollar me-2"></i>Keuangan</a>
         </div>
     </nav>
 </div>

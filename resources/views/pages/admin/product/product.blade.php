@@ -1,6 +1,11 @@
 @extends('layouts.admin')
 
 @push('style-after')
+    <style>
+        .product-desc{
+            max-width: 300px;
+        }
+    </style>
 @endpush
 
 @section('content')
@@ -48,7 +53,7 @@
                             <th>
                                 Harga
                             </th>
-                            <th style="width: 30%">
+                            <th class="product-desc" style="width: 30%">
                                 Deskripsi
                             </th>
                             <th style="width: 5%">
@@ -93,7 +98,7 @@
                                 </td>
                                 <td class="product-price" style="display: none;">{{ $item->product_price }}</td>
                                 <td>@currency($item->product_price)</td>
-                                <td class="product-desc">{{ $item-> product_description }}</td>
+                                <td class="product-desc">{{ $item->product_description }}</td>
                                 <td class="table-action">
                                     {{-- href="{{ route('products.edit',$item->id) }}"  --}}
                                     <a href="{{ route('product-details',$item->id) }}" class="btn btn-edit btn-info text-white" style="min-width: 45px;margin: 5px">

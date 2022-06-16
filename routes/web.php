@@ -12,6 +12,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\KeuanganController;
 use App\Http\Controllers\ChangeLogController;
 use App\Http\Controllers\OrderAdminController;
 
@@ -65,6 +66,7 @@ Route::middleware('role:admin')->group(function () {
     Route::resource('galleries',GalleryController::class);
     Route::resource('changes_logs',ChangeLogController::class);
     Route::resource('order-admin',OrderAdminController::class);
+    Route::resource('keuangan',KeuanganController::class);
 
     // Route::get('/user/profile', function () {
     //     // Uses first & second middleware...

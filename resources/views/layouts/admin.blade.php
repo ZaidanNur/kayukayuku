@@ -4,7 +4,18 @@
 @include('includes.admin.head')
 
 <body>
-    <div class="container-xxl position-relative bg-white d-flex p-0">
+    <style>
+        .content{
+            width:fit-content
+        }
+        .navbar{
+            width: 100vw;
+            position: relative;
+            /* left: 200px; just an estimate of your sidebar's width */
+            /* width: calc(100% - 200px); */
+            }
+    </style>
+    <div class="container-fluid position-relative bg-white d-flex p-0">
         @include('includes.admin.loading')
         @include('includes.admin.sidebar')
 

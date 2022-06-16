@@ -21,7 +21,7 @@
                             </div>
                                 <form class="gap-4" id="addProduct" action="{{ route('order-admin.store') }}" method="post">
                                     @csrf 
-                                    <input type="hidden" name="status" value="">
+                                    
                                     @guest
                                     @else
                                         <div class="form-group mb-3">

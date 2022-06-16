@@ -43,6 +43,7 @@ class OrderAdminController extends Controller
     public function store(Request $request)
     {
         $data = $request ->all();
+        // dd($data);
         Order::create($data);
         
         return redirect()->route('order-admin.order')->with('success','Pesanan berhasil ditambahkan');
