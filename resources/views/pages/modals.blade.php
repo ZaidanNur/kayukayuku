@@ -255,15 +255,15 @@
                                     @csrf
 
                                     
-                                    <input id="product-id" type="hidden" name="product_id" value="">
-                                    <input id="cart-id" type="hidden" name="cart_id" value="">
-                                    <input id="amount" type="hidden" name="amount" value="">
+                                    <input id="product-id" type="hidden" name="product_id" value="" required>
+                                    <input id="cart-id" type="hidden" name="cart_id" value="" required>
+                                    <input id="amount" type="hidden" name="amount" value="" required>
                                     @guest
                                     @else
                                         <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                                         <div class="form-group mb-3">
                                             <label for="product_name">Nama Pelanggan</label>
-                                            <input class="form-control" name="name" type="text" placeholder="Nama Pelanggan" value="">
+                                            <input class="form-control" name="name" type="text" placeholder="Nama Pelanggan" value="" required>
                                         </div>
                                     @endguest
 
@@ -274,17 +274,17 @@
 
                                     <div class="form-group mb-3">
                                         <label for="product_stock">Alamat Pelanggan</label>
-                                        <textarea name="address"  rows="4" class="d-block w-100 form-control" placeholder="Alamat Pelanggan"></textarea>
+                                        <textarea name="address"  rows="4" class="d-block w-100 form-control" placeholder="Alamat Pelanggan" required></textarea>
                                     </div>
 
                                     <div class="form-group mb-3">
                                         <label for="phone_number">Nomor Telepon</label>
-                                        <input class="form-control" type="text" name="phone_number" placeholder="Nomor Telepon">
+                                        <input class="form-control" type="text" name="phone_number" placeholder="Nomor Telepon" required>
                                     </div>
 
                                     <div class="form-group mb-3">
                                         <label for="note">Catatan</label>
-                                        <textarea name="note"  rows="4" class="d-block w-100 form-control" placeholder="Catatan"></textarea>
+                                        <textarea name="note"  rows="4" class="d-block w-100 form-control" placeholder="Catatan" required></textarea>
                                     </div>
 
                                     <button type="button" class="btn btn-danger btn-block mt-3" data-bs-dismiss="modal">Kembali</button>

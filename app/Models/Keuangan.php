@@ -10,7 +10,7 @@ class Keuangan extends Model
     use HasFactory;
 
     protected $fillable =[
-        'nama_kegiatan','jumlah_pemsukan','jumlah_pengeluaran','keterangan','tanggal'
+        'nama_barang','jumlah_pemasukan','jumlah_pengeluaran','keterangan','tanggal'
 
     ];
     

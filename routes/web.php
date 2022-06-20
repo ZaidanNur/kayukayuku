@@ -61,6 +61,12 @@ Route::middleware('role:admin')->group(function () {
     Route::get('/order-admin/payment-confirmation/rejected/{id}', [OrderAdminController::class, 'payment_confirmation_rejected'])->name('order-admin.payment-confirmation-rejected');
     Route::post('/order-admin/change-status', [OrderAdminController::class, 'order_status_change'])->name('order-admin.order-status-change');
     Route::post('/order-admin/edit/{id}', [OrderAdminController::class, 'order_edit'])->name('order-admin.order-edit');
+    Route::get('/keuangan/pengeluaran', [KeuanganController::class, 'pengeluaran_index'])->name('keuangan.pengeluaran');
+    Route::get('/keuangan/pengeluaran/month', [KeuanganController::class, 'pengeluaran_this_mount_index'])->name('keuangan.pengeluaran.thisMonth');
+    Route::get('/keuangan/pengeluaran/today', [KeuanganController::class, 'pengeluaran_today_index'])->name('keuangan.pengeluaran.today');
+    Route::get('/keuangan/pemasukan', [KeuanganController::class, 'pemasukan_index'])->name('keuangan.pemasukan');
+    Route::get('/keuangan/pemasukan/month', [KeuanganController::class, 'pemasukan_this_month_index'])->name('keuangan.pemasukan.thisMonth');
+    Route::get('/keuangan/pemasukan/today', [KeuanganController::class, 'pemasukan_today_index'])->name('keuangan.pemasukan.today');
     
     Route::resource('products',ProductController::class);
     Route::resource('galleries',GalleryController::class);

@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Payment;
 use App\Models\Product;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Models\Keuangan;
 use App\Models\CancelOrder;
+use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use App\Http\Controllers\Controller;
 
 class OrderAdminController extends Controller
 {
@@ -43,8 +45,16 @@ class OrderAdminController extends Controller
     public function store(Request $request)
     {
         $data = $request ->all();
-        // dd($data);
+        $product = Product::findOrFail($data['product_id']);
+        $new_product = Product::findOrFail($data['product_id'])->toArray();
+        $new_product['product_stock'] = $new_product['product_stock']-$data['amount'];
+        
+        
+        
         Order::create($data);
+        $product->update($new_product);
+
+
         
         return redirect()->route('order-admin.order')->with('success','Pesanan berhasil ditambahkan');
     }
@@ -146,10 +156,24 @@ class OrderAdminController extends Controller
         $payment->update($new_payment);
         
         $order = Order::findOrFail($payment['order_id']);
-        $new_order =  Order::findOrFail($payment['order_id'])->toArray();
+        $new_order =  Order::with('product')->findOrFail($payment['order_id'])->toArray();
         $new_order['status'] = 'Pesanan Diproses';
 
         $order->update($new_order);
+
+        // dd($new_order);
+        // dd($new_payment);
+
+
+        $pemasukan = [
+            'nama_barang'=>$new_order['product']['product_name'],
+            'jumlah_pemasukan'=>$new_order['amount'] * $new_order['product']['product_price'],
+            'jumlah_pengeluaran'=>0,
+            'keterangan'=>'Penjualan '.$new_order['product']['product_name'],
+            'tanggal'=>Carbon::now()
+        ];
+
+        Keuangan::create($pemasukan);
 
         return redirect()->route('order-admin.order')->with('success','Pembayaran berhasil dikonfirmasi');
 

@@ -33,43 +33,31 @@
     @endif
 
     
-    <div class="d-flex">
-        {{-- <a href='#' class="btn-sm btn-add-product btn-primary shadow-s" data-bs-toggle="modal" data-bs-target="#createPengeluaranModal">
-            <i class="fa-solid fa-circle-plus me-2"></i>Tambah Pengeluaran
-        </a> --}}
-        <a href='#' class="btn btn-add-product btn-primary shadow-s rounded-pill px-2 me-3">
+    <div class="d-flex mb-4">
+        <a href='{{ route('keuangan.index') }}' class="btn btn-add-product btn-outline-primary shadow-s rounded-pill me-2" style="color:#009CFF; ">
             Semua
         </a>
-        <a href='{{ route('keuangan.pengeluaran') }}' class="btn btn-add-product btn-outline-primary shadow-s rounded-pill px-2 me-3" style="color:#009CFF">
+        <a href='#' class="btn btn-add-product btn-primary shadow-s rounded-pill me-3" style="">
             Pengeluaran
         </a>
-        <a href='{{ route('keuangan.pemasukan') }}' class="btn btn-add-product btn-outline-primary shadow-s rounded-pill px-2 me-3 " style="color:#009CFF">
+        <a href='{{ route('keuangan.pemasukan') }}' class="btn btn-add-product btn-outline-primary shadow-s rounded-pill me-3" style="color:#009CFF;">
             Pemasukan
         </a>
 
     </div>
-    <div class="card mt-5 p-3 pe-3" style="">
-        <div class="card card-pemasukan-pengeluaran">
-            <div class="d-flex border-bottom">
-                <div class="d-flex flex-column align-items-center border-end pt-2" style="width: 50%">
-                    <h5 style="color: #0be881">@currency($pemasukan->total_pemasukan)</h5>
-                    Pemasukan
-                </div>
-                <div class="d-flex flex-column align-items-center pt-2" style="width: 50%">
-                    <h5 style="color: #ff5e57">@currency($pengeluaran->total_pengeluaran)</h5>
-                    Pengeluaran
-                </div>
-            </div>
-            <div class="d-flex justify-content-between keuntungan">
-                <div>
-                    Keuntungan
-                </div>
-                <div>
-                    <h5 style="color: cornflowerblue">@currency($pemasukan->total_pemasukan-$pengeluaran->total_pengeluaran)</h5>
-                </div>
-            </div>
-        </div>
 
+    <a href='#' class="btn-sm btn-add-product btn-primary shadow-s py-2 me-3 mb-3" data-bs-toggle="modal" data-bs-target="#createPengeluaranModal">
+        <i class="fa-solid fa-circle-plus me-2"></i>Tambah Pengeluaran
+    </a>
+    <div style="margin-top: 30px">
+        <a href='{{ route('keuangan.pengeluaran.thisMonth') }}' class="btn {{ request()->is('*month*') ? 'btn-primary' : 'btn-outline-primary'}} py-2 shadow-s rounded-pill me-3" style="color:{{ request()->is('*month*') ? '#fff' : '#009CFF'}};">
+            Bulan Ini
+        </a>
+        <a href='{{ route('keuangan.pengeluaran.today') }}' class="btn {{ request()->is('*today*') ? 'btn-primary' : 'btn-outline-primary'}} shadow-s py-2 rounded-pill me-3" style="color:{{ request()->is('*today*') ?  '#fff':'#009CFF'}};">
+            Hari Ini
+        </a>
+    </div>
+    <div class="card mt-4 p-3 pe-3" style="">
         <table class="table table-bordered table-striped ;me-4 mb-4" data-order='[[ 1, "asc" ]]' data-page-length='25' id="productTable" width='100%' cellspacing="0">
             <thead>
                 <tr>
@@ -80,7 +68,7 @@
                         Keterangan
                     </th>
                     <th class="text-center">
-                        Pemasukan
+                        Tanggal
                     </th>
                     <th class="text-center">
                         Pengeluaran
@@ -89,12 +77,15 @@
             </thead>
             
             <tbody>
-                @if ($keuangan)
-                    @foreach ($keuangan as $item)
+                @if ($pengeluaran)
+                    @foreach ($pengeluaran as $item)
                         <tr class="content-row">
                             <td>{{ $item->nama_barang }}</td>
                             <td style="width: 20%">{{ $item->keterangan }}</td>
-                            <td class="text-center" style="color: #0be881">@currency($item->jumlah_pemasukan)</td>
+                            <?php 
+                            $DateTime = DateTime::createFromFormat('Y-m-d', $item->tanggal);
+                            ?>
+                            <td class="text-center">{{ date_format($DateTime,"d F Y") }}</td>
                             <td class="text-center" style="color: #ff5e57">@currency($item->jumlah_pengeluaran)</td>     
                         </tr>
                     @endforeach
@@ -109,7 +100,6 @@
 
         </table>
     </div>
-
 </div>
 
 
@@ -140,6 +130,30 @@
             modal.find('textarea[name="note"]').val(note);
             modal.find('form').attr('action', url);
         });
+
+        $('#btnPickDate').on('click',function () {
+            var input = $('datePicker').pi
+        });
+
+        $('#btnPickDate').on('click', function() {
+            var $input = $('datePicker').pickadate();
+            var picker = $input.pickadate('picker');
+
+            event.stopPropagation()
+            event.preventDefault()
+            picker.open();
+            });
+
+        // $("#datePicker").datepicker({
+        //     showOn: 'button',
+        //     buttonImageOnly: true,
+        //     buttonImage: 'images/calendar.gif',
+        //     dateFormat: 'dd/mm/yy'
+        // });
+
+        // $("#btnPickDate").click(function () {
+        //     $(document).datepicker('show')
+        // })
 
         //     $('#btnAddProduct').on('click',function () {
         //         $('#addProduct').submit();
@@ -214,4 +228,5 @@
 
     });
 </script>
-@endpush @endsection
+@endpush 
+@endsection
