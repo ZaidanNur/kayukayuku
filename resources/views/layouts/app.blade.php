@@ -13,26 +13,38 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://kit.fontawesome.com/d79b975262.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
-    
-    
+
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    
-    
-    
-    
-    @include("includes.style")    
+
+
+
+
+    @include("includes.style")
     @stack("after-style")
     @livewireStyles
 
 
 </head>
 <body>
+    <style>
+
+    @media screen and (max-width: 767px) {
+        #left-navbar-action {
+            display: none!important;
+        }
+        .left-navbar-action{
+            display: block!important;
+        }
+    }
+
+    </style>
     <div id="app">
         @include('includes.navbar')
         @include('pages.modals')
-        
+
         <main class="py-4">
             @yield('content')
         </main>

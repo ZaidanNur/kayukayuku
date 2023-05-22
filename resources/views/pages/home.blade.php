@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('after-style')
+
+@endsection
+
 @section('content')
     @if($errors->any())
         <div class="alert alert-danger">
@@ -16,7 +20,7 @@
             {{ session('success') }}
         </div>
     @endif
-<header>
+<header class="w-100">
     <div class="text-center">
         <h1>
             Premium Handycraft
@@ -72,7 +76,7 @@
     </div>
     <hr>
     <div class="section-best-selling-product row justify-content-start pe-3">
-        <!-- 
+        <!--
             Bagian bawah ini nanti di looping
          -->
         @foreach ($items as $item)
@@ -92,7 +96,7 @@
                     @endforeach
 
                     @if ($is_image)
-                        
+
                     @else
                     <img src="{{ url("images/img-not-found.jpg") }}" class="card-img-top" alt="...">
                     @endif

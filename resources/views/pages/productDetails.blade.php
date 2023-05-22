@@ -20,13 +20,14 @@
                     @endforeach
 
                     @if ($is_image)
-                        
+
                     @else
                     <img src="{{ url("images/img-not-found.jpg") }}" class="img-fluid" alt="...">
                     @endif
-                    
+
                 <div class="card-content">
                     <h1 class="pt-2">{{ $item->product_name }}</h1>
+                    <h5 class="pt-2">Stok : {{ $item->product_stock }}</h5>
                     <h4 >@currency($item->product_price)</h4>
                     <p>{{ $item->product_description }}</p>
                 </div>
