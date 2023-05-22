@@ -34,6 +34,9 @@ Route::get('/product-details/{id}',[ProductController::class,'details'])->name('
 Route::get('/barang',[ProductController::class,'barang'])->name('barang');
 Route::get('/payment/{order}',[PaymentController::class,'show_payment_confirmation'])->name('payment_confirmation');
 Route::post('/orders/cancel',[OrderController::class,'cancel_order'])->name('orders.cancel');
+Route::get('/testing',function(){
+    return view('pages.test');
+})->name('test');
 // Route::get('/edit-profile/{id}', [UserController::class, 'edit'])->name('edit-profile');
 
 
@@ -67,7 +70,7 @@ Route::middleware('role:admin')->group(function () {
     Route::get('/keuangan/pemasukan', [KeuanganController::class, 'pemasukan_index'])->name('keuangan.pemasukan');
     Route::get('/keuangan/pemasukan/month', [KeuanganController::class, 'pemasukan_this_month_index'])->name('keuangan.pemasukan.thisMonth');
     Route::get('/keuangan/pemasukan/today', [KeuanganController::class, 'pemasukan_today_index'])->name('keuangan.pemasukan.today');
-    
+
     Route::resource('products',ProductController::class);
     Route::resource('galleries',GalleryController::class);
     Route::resource('changes_logs',ChangeLogController::class);
