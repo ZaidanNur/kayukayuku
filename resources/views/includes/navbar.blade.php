@@ -16,6 +16,10 @@
                     <a class="nav-link" href="{{ route('company') }}" style="color: #4e030e;font-family: Montserrat;
                     font-weight: 400;">{{ __('Tentang') }}</a>
                 </li>
+                <li class="nav-item me-5">
+                    <a class="nav-link" href="{{ route('test') }}" style="color: #4e030e;font-family: Montserrat;
+                    font-weight: 400;">Testing Note</a>
+                </li>
                 @role('customer')
                     <li class="nav-item me-5">
                         <a class="nav-link" href="{{ route('barang') }}" style="color: #4e030e;font-family: Montserrat;

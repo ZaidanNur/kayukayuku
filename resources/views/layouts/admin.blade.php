@@ -6,10 +6,10 @@
 <body>
     <style>
         .content{
-            width:fit-content
+            /* width:fit-content */
         }
         .navbar{
-            width: 100vw;
+            width: 100%;
             position: relative;
             /* left: 200px; just an estimate of your sidebar's width */
             /* width: calc(100% - 200px); */
@@ -49,7 +49,7 @@
     <!-- Template Javascript -->
     <script src="{{ url('backend/dashboard/js/main.js') }}"></script>
     <script>
-        
+
     </script>
     @livewireScripts
     @stack('script-after')

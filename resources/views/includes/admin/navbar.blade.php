@@ -11,7 +11,7 @@
     <div class="navbar-nav align-items-center ms-auto">
         <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                
+
                 <i class="fa fa-bell me-lg-2" id="notification">
                     @if (! $items == null)
                     @foreach ($items as $item)
@@ -44,11 +44,11 @@
                     @endforeach
 
                     @if ($notif)
-                        
+
                     @else
                         <a href="#" class="dropdown-item" id="notificationItem">
                             <h6 class="fw-normal mb-0">Belum ada notifikasi</h6>
-                            
+
                         </a>
                         <hr class="dropdown-divider">
                     @endif
@@ -79,7 +79,8 @@
             <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                 <!-- <a href="{{ route('profile',Auth::user()->id) }}" class="dropdown-item">My Profile</a> -->
                 <!-- <a href="#" class="dropdown-item">Settings</a> -->
-                <a href="#" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#logoutModal">Log Out</a>
+                <a href="{{ route('home') }}" class="dropdown-item">Back Website</a>
+                <a href="#" class="dropdown-item bg-danger text-white" data-bs-toggle="modal" data-bs-target="#logoutModal">Log Out</a>
             </div>
         </div>
     </div>
