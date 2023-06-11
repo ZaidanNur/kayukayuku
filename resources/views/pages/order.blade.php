@@ -16,7 +16,7 @@
         </div>
     @endif
 
-    
+
     <div class="container order">
         <div class="card">
             @if (count($orders) > 0)
@@ -31,12 +31,12 @@
                                     @php
                                         $isImage=true;
                                     @endphp
-                                    @break                         
+                                    @break
                                 @endif
                             @endforeach
 
                             @if ($isImage)
-                                        
+
                             @else
                                 <img src="{{ url("images\img-not-found.jpg") }}" style="max-width: 240px" class="p-3" alt="">
                             @endif
@@ -48,15 +48,15 @@
                                 </div>
                                 <div class="d-flex flex-column justify-content-end">
                                     <div>
-                                        @if ($order->status == 'Menunggu Pembayaran')
+                                        {{-- @if ($order->status == 'Menunggu Pembayaran')
                                             <a href="{{ route('payment_confirmation',$order) }}" class="btn btn-primary" >Konfirmasi Pembayaran</a>
-                                        @endif
+                                        @endif --}}
                                         <a href="{{ route('orders.show',$order) }}"  class="btn btn-info">Detail Pesanan</a>
                                     </div>
                                     <div class="d-flex justify-content-end mt-2">
-                                        @if ($order->status == 'Menunggu Pembayaran')
+                                        {{-- @if ($order->status == 'Menunggu Pembayaran')
                                             <a id="btnCancelOrder" class="btn btn-danger"  data-bs-toggle="modal" data-order="{{  $order->id }}" data-bs-target="#cancelOrderModal">Batalkan Pesanan</a>
-                                        @endif
+                                        @endif --}}
                                     </div>
                                 </div>
                             </div>
@@ -73,7 +73,7 @@
                     </div>
                 @endforeach
             @else
-                
+
             @endif
         </div>
     </div>

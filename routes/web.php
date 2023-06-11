@@ -1,8 +1,12 @@
 <?php
 
+use Midtrans\Snap;
+use Midtrans\Config;
 use App\Models\ChangeLog;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
@@ -37,6 +41,48 @@ Route::post('/orders/cancel',[OrderController::class,'cancel_order'])->name('ord
 Route::get('/testing',function(){
     return view('pages.test');
 })->name('test');
+Route::get('/migrate',function(){
+    Artisan::call('migrate');
+    return 'Migrasi berhasil!';
+});
+Route::get('/midtrans',function(){
+    // Set your Merchant Server Key
+    Config::$serverKey = config('midtrans.server-key');
+    // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+    Config::$isProduction = config('midtrans.isProduction');
+    // Set sanitization on (default)
+    Config::$isSanitized = config('midtrans.isSanitized');
+    // Set 3DS transaction for credit card to true
+    Config::$is3ds = config('midtrans.is3ds');
+
+    $params = array(
+        'transaction_details' => array(
+            'order_id' => 'MDTRNS-'.Carbon::now(),
+            'gross_amount' => 10000,
+        ),
+        'customer_details'=>[
+            'first_name'=>'zaidan',
+            'email'=>'zaixyz332@gmail.com',
+        ],
+        'enabled_payments'=>['gopay'],
+        'vtweb'=>[]
+    );
+
+    try {
+        // ambil halaman payment midtrans
+        // Get Snap Payment Page URL
+        // dd('here');
+        $paymentUrl = Snap::createTransaction($params)->redirect_url;
+
+        // Redirect to Snap Payment Page
+        header('Location: ' . $paymentUrl);
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
+    // return 'Migrasi berhasil!';
+});
+
+
 // Route::get('/edit-profile/{id}', [UserController::class, 'edit'])->name('edit-profile');
 
 
