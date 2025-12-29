@@ -1,3 +1,9 @@
+@import "tailwindcss";
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
 .home-title {
     font-family: Jacques Francois;
     font-size: 30px;
@@ -158,6 +164,3 @@ header .btn-explore:hover:before {
     width: 100px;
     border-radius: 20px;
 }
-
-
-/*# sourceMappingURL=main.css.map */

@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Models\Product;
 use Livewire\Component;
 use App\Models\ChangeLog;
-use Illuminate\Http\Client\Request;
 
 class ChangeStock extends Component
 {
@@ -36,7 +35,7 @@ class ChangeStock extends Component
         ChangeLog::create($log);
 
         $item -> update($newData);
-        $this->emitSelf('changed');
+        $this->dispatch('changed')->self();
     }
 
     public function addStock($id)
@@ -56,7 +55,7 @@ class ChangeStock extends Component
         ChangeLog::create($log);
 
         $item -> update($newData);
-        $this->emitSelf('changed');
+        $this->dispatch('changed')->self();
     }
 
     public function change_stock_batch($id)
