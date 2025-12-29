@@ -1,23 +1,38 @@
-<div class="div">
-    <div class="d-flex align-items-center" >
-        {{-- If your happiness depends on money, you will never be happy with yourself. --}}
-        <button 
-        wire:click="reduceStock({{ $item->id }})"
-        class="btn btn-danger" style="width: 25px; height: 25px; padding: 0; margin-inline: 10px"><i class="fa-solid fa-minus fa-1x"></i></button>
-    
-        <input class="form-control" style="max-width: 150px" type="number" wire:model="jumlah" required>
-        @error('jumlah') <span class="error">{{ $message }}</span> @enderror
-     
-    
-        <button
-        wire:click="addStock({{ $item->id }})"
-        class="btn btn-primary" style="width: 25px; height: 25px; padding: 0; margin-inline: 10px"><i class="fa-solid fa-plus fa-1x"></i></button>
-    
-        <button 
-        wire:click="destroy({{ $item->id }})"
-        class="btn btn-danger" style="width: 25px; height: 25px; padding: 0; margin-inline: 10px"><i class="fa-solid fa-trash-can"></i></button>
+<div class="flex flex-wrap md:flex-nowrap items-center justify-between gap-4 w-full">
+    {{-- Quantity Controls --}}
+    <div class="flex items-center bg-[#FDFBF7] rounded-lg border border-[#E6CCB2] p-1">
+        <button type="button" wire:click="reduceStock({{ $item->id }})"
+            class="w-8 h-8 flex items-center !bg-[#FDFBF7] justify-center text-[#7F5539] !hover:bg-[#E6CCB2] hover:cursor-pointer rounded transition-colors"
+            aria-label="Decrease quantity">
+            <i class="fa-solid fa-minus text-sm"></i>
+        </button>
+
+        <input type="number" wire:model="jumlah"
+            class="w-12 text-center border-none p-0 !text-[#4E030E] font-bold focus:ring-0 appearance-none bg-transparent"
+            readonly>
+
+        <button type="button" wire:click="addStock({{ $item->id }})"
+            class="w-8 h-8 flex items-center !bg-[#FDFBF7] justify-center text-[#7F5539] !hover:bg-[#E6CCB2] hover:cursor-pointer rounded transition-colors"
+            aria-label="Increase quantity">
+            <i class="fa-solid fa-plus text-sm"></i>
+        </button>
     </div>
-    <button id="btnPesan"
-    class="btn btn-primary mt-3" style="width: 150px; margin-left: 45px" data-bs-toggle="modal" data-product="{{  $item->product_id }}" data-amount="{{ $jumlah }}" data-productname ="{{ $product_name }}" data-cart="{{ $item->id }}" data-bs-target="#orderModal" {{ $jumlah>0?'':'disabled' }}>Checkout</button>
-    
+
+    {{-- Validation Error --}}
+    @error('jumlah') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+
+    {{-- Action Buttons --}}
+    <div class="flex items-center gap-3 ml-auto">
+        <button type="button" wire:click="destroy({{ $item->id }})" class="text-red-400 hover:text-red-600 p-2 transition-colors"
+            title="Remove Item">
+            <i class="fa-solid fa-trash-can"></i>
+        </button>
+
+        <button type="button"
+            onclick="openCheckoutModal('{{ $item->product_id }}', '{{ $product_name }}', '{{ $item->id }}', '{{ $jumlah }}')"
+            class="px-6 py-2 bg-[#A67C52] text-white font-bold rounded-lg shadow hover:bg-[#8B6544] disabled:opacity-50 disabled:cursor-not-allowed transition-all text-sm uppercase tracking-wide"
+            {{ $jumlah > 0 ? '' : 'disabled' }}>
+            Checkout
+        </button>
+    </div>
 </div>

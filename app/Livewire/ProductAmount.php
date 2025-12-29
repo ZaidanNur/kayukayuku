@@ -1,11 +1,9 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Models\Cart;
-use App\Models\Product;
 use Livewire\Component;
-use App\Models\ChangeLog;
 
 class ProductAmount extends Component
 {
@@ -33,7 +31,7 @@ class ProductAmount extends Component
 
         $item -> update($newData);
         $this->jumlah =  $newData['jumlah'];
-        $this->emitSelf('changed');
+        $this->dispatch('changed')->self();
     }
 
     public function addStock($id)
@@ -45,7 +43,7 @@ class ProductAmount extends Component
 
         $item -> update($newData);
         $this->jumlah =  $newData['jumlah'];
-        $this->emitSelf('changed');
+        $this->dispatch('changed')->self();
     }
 
     public function destroy($id)
