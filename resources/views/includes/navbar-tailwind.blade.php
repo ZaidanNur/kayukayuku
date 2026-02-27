@@ -119,9 +119,6 @@
             <a href="{{ route('company') }}" class="block text-[#4E030E] font-medium py-2 border-b border-gray-100">
                 {{ __('Tentang') }}
             </a>
-            <a href="{{ route('test') }}" class="block text-[#4E030E] font-medium py-2 border-b border-gray-100">
-                Testing Note
-            </a>
 
             @role('customer')
             <a href="{{ route('barang') }}" class="block text-[#4E030E] font-medium py-2 border-b border-gray-100">
