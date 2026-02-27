@@ -1,64 +1,87 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Project Kayukayuku
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Live Demo
+Check out the live application at: [https://kayukayuku.zaidandev.site/](https://kayukayuku.zaidandev.site/)
 
-## About Laravel
+### Testing Accounts
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**Admin Account:**
+- **Email:** `Admin@test.com`
+- **Password:** `1234asdf`
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+**Customer Account:**
+- **Email:** `Customer@test.com`
+- **Password:** `1234asdf`
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## About The Project
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Kayukayuku is an e-commerce web application built specifically with Laravel, Livewire, and Midtrans integration for payment processing.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Built With
 
-## Laravel Sponsors
+* [Laravel 12](https://laravel.com)
+* [Livewire](https://laravel-livewire.com/)
+* [Midtrans PHP](https://docs.midtrans.com/)
+* [Spatie Laravel Permission](https://spatie.be/docs/laravel-permission/v6/introduction)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+---
 
-### Premium Partners
+## Getting Started
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+To get a local copy up and running, follow these simple steps.
 
-## Contributing
+### Prerequisites
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+* PHP >= 8.2
+* Composer
+* Node.js & NPM
+* Database (MySQL/PostgreSQL/SQLite)
 
-## Code of Conduct
+### Installation
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+1. Clone the repository or download the source code.
+2. Navigate to the project directory:
+   ```bash
+   cd kayukayuku
+   ```
+3. Install PHP dependencies via Composer:
+   ```bash
+   composer install
+   ```
+4. Install and compile frontend assets:
+   ```bash
+   npm install
+   npm run build
+   ```
+5. Copy the `.env.example` file to `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+6. Generate an application key:
+   ```bash
+   php artisan key:generate
+   ```
+7. Configure your database and Midtrans credentials in the `.env` file:
+   ```env
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=kayukayuku
+   DB_USERNAME=root
+   DB_PASSWORD=
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+   MIDTRANS_SERVER_KEY=your_server_key
+   MIDTRANS_CLIENT_KEY=your_client_key
+   MIDTRANS_IS_PRODUCTION=false
+   ```
+8. Run the database migrations and seeders:
+   ```bash
+   php artisan migrate --seed
+   ```
+9. Serve the application:
+   ```bash
+   php artisan serve
+   ```
+   *The application will be accessible at `http://localhost:8000`.*
