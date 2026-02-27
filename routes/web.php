@@ -34,18 +34,18 @@ use App\Http\Controllers\OrderAdminController;
 Route::get('/', [HomepageController::class, 'index'])->name('home');
 Route::get('/company-profile', [CompanyController::class, 'index'])->name('company');
 Route::get('/user-profile/{id}', [ProfileController::class, 'index'])->name('profile');
-Route::get('/product-details/{id}',[ProductController::class,'details'])->name('product-details');
-Route::get('/barang',[ProductController::class,'barang'])->name('barang');
-Route::get('/payment/{order}',[PaymentController::class,'show_payment_confirmation'])->name('payment_confirmation');
-Route::post('/orders/cancel',[OrderController::class,'cancel_order'])->name('orders.cancel');
-Route::get('/testing',function(){
-    return view('pages.test');
-})->name('test');
-Route::get('/migrate',function(){
+Route::get('/product-details/{id}', [ProductController::class, 'details'])->name('product-details');
+Route::get('/barang', [ProductController::class, 'barang'])->name('barang');
+Route::get('/payment/{order}', [PaymentController::class, 'show_payment_confirmation'])->name('payment_confirmation');
+Route::post('/orders/cancel', [OrderController::class, 'cancel_order'])->name('orders.cancel');
+// Route::get('/testing',function(){
+//     return view('pages.test');
+// })->name('test');
+Route::get('/migrate', function () {
     Artisan::call('migrate');
     return 'Migrasi berhasil!';
 });
-Route::get('/clear-config',function(){
+Route::get('/clear-config', function () {
     Artisan::call('migrate');
     return 'clear config berhasil';
 });
@@ -68,7 +68,7 @@ Route::get('/admin', function () {
 
 Route::middleware('role:admin')->group(function () {
     Route::get('/dashboard', [ProductController::class, 'index'])->name('dashboard');
-    Route::put('/change-stock-batch/{id}',[ProductController::class,'change_stock_batch'])->name('change-stock.batch');
+    Route::put('/change-stock-batch/{id}', [ProductController::class, 'change_stock_batch'])->name('change-stock.batch');
     Route::get('/order-admin/order', [OrderAdminController::class, 'order'])->name('order-admin.order');
     Route::get('/order-admin/order-detail/{order}', [OrderAdminController::class, 'order_detail'])->name('order-admin.order-detail');
     Route::get('/order-admin/canceled-order', [OrderAdminController::class, 'canceled_order'])->name('order-admin.canceled-order');
@@ -84,11 +84,11 @@ Route::middleware('role:admin')->group(function () {
     Route::get('/keuangan/pemasukan/month', [KeuanganController::class, 'pemasukan_this_month_index'])->name('keuangan.pemasukan.thisMonth');
     Route::get('/keuangan/pemasukan/today', [KeuanganController::class, 'pemasukan_today_index'])->name('keuangan.pemasukan.today');
 
-    Route::resource('products',ProductController::class);
-    Route::resource('galleries',GalleryController::class);
-    Route::resource('changes_logs',ChangeLogController::class);
-    Route::resource('order-admin',OrderAdminController::class);
-    Route::resource('keuangan',KeuanganController::class);
+    Route::resource('products', ProductController::class);
+    Route::resource('galleries', GalleryController::class);
+    Route::resource('changes_logs', ChangeLogController::class);
+    Route::resource('order-admin', OrderAdminController::class);
+    Route::resource('keuangan', KeuanganController::class);
 
     // Route::get('/user/profile', function () {
     //     // Uses first & second middleware...
@@ -96,8 +96,8 @@ Route::middleware('role:admin')->group(function () {
 });
 
 
-Route::resource('users',UserController::class);
-Route::resource('carts',CartController::class);
-Route::resource('orders',OrderController::class);
-Route::resource('payment',PaymentController::class);
-Auth::routes(['verify'=>true]);
+Route::resource('users', UserController::class);
+Route::resource('carts', CartController::class);
+Route::resource('orders', OrderController::class);
+Route::resource('payment', PaymentController::class);
+Auth::routes(['verify' => true]);
